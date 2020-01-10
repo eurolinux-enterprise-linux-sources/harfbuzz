@@ -1,14 +1,17 @@
+NULL =
+
 # Base and default-included sources and headers
 
 HB_BASE_sources = \
 	hb-atomic-private.hh \
 	hb-blob.cc \
+	hb-buffer-deserialize-json.hh \
+	hb-buffer-deserialize-text.hh \
 	hb-buffer-private.hh \
 	hb-buffer-serialize.cc \
 	hb-buffer.cc \
+	hb-cache-private.hh \
 	hb-common.cc \
-	hb-debug.hh \
-	hb-dsalgs.hh \
 	hb-face-private.hh \
 	hb-face.cc \
 	hb-font-private.hh \
@@ -17,21 +20,17 @@ HB_BASE_sources = \
 	hb-object-private.hh \
 	hb-open-file-private.hh \
 	hb-open-type-private.hh \
-	hb-ot-cbdt-table.hh \
 	hb-ot-cmap-table.hh \
 	hb-ot-glyf-table.hh \
 	hb-ot-head-table.hh \
 	hb-ot-hhea-table.hh \
 	hb-ot-hmtx-table.hh \
-	hb-ot-kern-table.hh \
 	hb-ot-maxp-table.hh \
 	hb-ot-name-table.hh \
 	hb-ot-os2-table.hh \
-	hb-ot-post-macroman.hh \
 	hb-ot-post-table.hh \
 	hb-ot-tag.cc \
 	hb-private.hh \
-	hb-set-digest-private.hh \
 	hb-set-private.hh \
 	hb-set.cc \
 	hb-shape.cc \
@@ -41,20 +40,10 @@ HB_BASE_sources = \
 	hb-shaper-impl-private.hh \
 	hb-shaper-private.hh \
 	hb-shaper.cc \
-	hb-string-array.hh \
 	hb-unicode-private.hh \
 	hb-unicode.cc \
 	hb-utf-private.hh \
 	hb-warning.cc \
-	$(NULL)
-
-HB_BASE_RAGEL_GENERATED_sources = \
-	hb-buffer-deserialize-json.hh \
-	hb-buffer-deserialize-text.hh \
-	$(NULL)
-HB_BASE_RAGEL_sources = \
-	hb-buffer-deserialize-json.rl \
-	hb-buffer-deserialize-text.rl \
 	$(NULL)
 
 HB_BASE_headers = \
@@ -75,15 +64,9 @@ HB_NODIST_headers = \
 	hb-version.h \
 	$(NULL)
 
-HB_FALLBACK_sources = \
-	hb-fallback-shape.cc	\
-	$(NULL)
+HB_FALLBACK_sources = hb-fallback-shape.cc
 
 HB_OT_sources = \
-	hb-aat-layout.cc \
-	hb-aat-layout-common-private.hh \
-	hb-aat-layout-morx-table.hh \
-	hb-aat-layout-private.hh \
 	hb-ot-font.cc \
 	hb-ot-layout.cc \
 	hb-ot-layout-common-private.hh \
@@ -95,8 +78,6 @@ HB_OT_sources = \
 	hb-ot-layout-private.hh \
 	hb-ot-map.cc \
 	hb-ot-map-private.hh \
-	hb-ot-math.cc \
-	hb-ot-math-table.hh \
 	hb-ot-shape.cc \
 	hb-ot-shape-complex-arabic.cc \
 	hb-ot-shape-complex-arabic-fallback.hh \
@@ -107,13 +88,15 @@ HB_OT_sources = \
 	hb-ot-shape-complex-hangul.cc \
 	hb-ot-shape-complex-hebrew.cc \
 	hb-ot-shape-complex-indic.cc \
+	hb-ot-shape-complex-indic-machine.hh \
 	hb-ot-shape-complex-indic-private.hh \
 	hb-ot-shape-complex-indic-table.cc \
-	hb-ot-shape-complex-khmer.cc \
 	hb-ot-shape-complex-myanmar.cc \
+	hb-ot-shape-complex-myanmar-machine.hh \
 	hb-ot-shape-complex-thai.cc \
 	hb-ot-shape-complex-tibetan.cc \
 	hb-ot-shape-complex-use.cc \
+	hb-ot-shape-complex-use-machine.hh \
 	hb-ot-shape-complex-use-private.hh \
 	hb-ot-shape-complex-use-table.cc \
 	hb-ot-shape-complex-private.hh \
@@ -122,34 +105,14 @@ HB_OT_sources = \
 	hb-ot-shape-fallback-private.hh \
 	hb-ot-shape-fallback.cc \
 	hb-ot-shape-private.hh \
-	hb-ot-var.cc \
-	hb-ot-var-avar-table.hh \
-	hb-ot-var-fvar-table.hh \
-	hb-ot-var-hvar-table.hh \
-	hb-ot-var-mvar-table.hh \
-	$(NULL)
-
-HB_OT_RAGEL_GENERATED_sources = \
-	hb-ot-shape-complex-indic-machine.hh \
-	hb-ot-shape-complex-khmer-machine.hh \
-	hb-ot-shape-complex-myanmar-machine.hh \
-	hb-ot-shape-complex-use-machine.hh \
-	$(NULL)
-HB_OT_RAGEL_sources = \
-	hb-ot-shape-complex-indic-machine.rl \
-	hb-ot-shape-complex-khmer-machine.rl \
-	hb-ot-shape-complex-myanmar-machine.rl \
-	hb-ot-shape-complex-use-machine.rl \
 	$(NULL)
 
 HB_OT_headers = \
 	hb-ot.h \
 	hb-ot-font.h \
 	hb-ot-layout.h \
-	hb-ot-math.h \
 	hb-ot-shape.h \
 	hb-ot-tag.h \
-	hb-ot-var.h \
 	$(NULL)
 
 # Optional Sources and Headers with external deps

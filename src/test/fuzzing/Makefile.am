@@ -14,8 +14,6 @@ $(top_builddir)/src/libharfbuzz-fuzzing.la: lib
 
 EXTRA_DIST += \
 	README \
-	run-fuzzer-tests.py \
-	CMakeLists.txt \
 	$(NULL)
 
 check_PROGRAMS = \
@@ -32,21 +30,23 @@ LDADD = \
 	$(NULL)
 
 hb_fuzzer_SOURCES = \
-	hb-fuzzer.hh \
 	hb-fuzzer.cc \
-	main.cc \
 	$(NULL)
 hb_fuzzer_LDADD = \
 	$(LDADD) \
 	$(NULL)
 hb_fuzzer_CPPFLAGS = \
 	$(AM_CPPFLAGS) \
+	-DMAIN \
 	$(NULL)
 hb_fuzzer_DEPENDENCIES = \
 	lib \
 	$(NULL)
 
 check:
-	EXEEXT="$(EXEEXT)" srcdir="$(srcdir)" builddir="$(builddir)" $(srcdir)/run-fuzzer-tests.py
+	cat $(srcdir)/../shaping/tests/fuzzed.tests | \
+	cut -d: -f1 | while read x; do \
+		./hb-fuzzer $(srcdir)/../shaping/$$x; \
+	done
 
 -include $(top_srcdir)/git.mk

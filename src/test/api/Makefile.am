@@ -10,8 +10,6 @@ MAINTAINERCLEANFILES =
 lib:
 	@$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/src lib
 
-EXTRA_DIST += CMakeLists.txt
-
 if HAVE_GLIB
 AM_CPPFLAGS = -DSRCDIR="\"$(srcdir)\"" -I$(top_srcdir)/src/ -I$(top_builddir)/src/ $(GLIB_CFLAGS)
 LDADD = $(top_builddir)/src/libharfbuzz.la $(GLIB_LIBS)
@@ -33,11 +31,11 @@ TEST_PROGS = \
 	test-version \
 	$(NULL)
 
-test_unicode_CPPFLAGS = \
-	$(AM_CPPFLAGS) \
-	$(GLIB_CFLAGS) \
-	$(NULL)
+test_unicode_CPPFLAGS = $(AM_CPPFLAGS)
 test_unicode_LDADD = $(LDADD)
+if HAVE_GLIB
+test_unicode_CPPFLAGS += $(GLIB_CFLAGS)
+endif
 if HAVE_ICU
 test_unicode_CPPFLAGS += $(ICU_CFLAGS)
 test_unicode_LDADD += $(top_builddir)/src/libharfbuzz-icu.la $(ICU_LIBS)
@@ -45,29 +43,10 @@ endif
 
 
 if HAVE_OT
-
 TEST_PROGS += \
 	test-ot-tag \
 	$(NULL)
-
-if HAVE_FREETYPE
-TEST_PROGS += \
-	test-ot-math \
-	$(NULL)
-test_ot_math_LDADD = $(LDADD) $(FREETYPE_LIBS)
-test_ot_math_CPPFLAGS = $(AM_CPPFLAGS) $(FREETYPE_CFLAGS)
-EXTRA_DIST += \
-	fonts/MathTestFontEmpty.otf \
-	fonts/MathTestFontFull.otf \
-	fonts/MathTestFontNone.otf \
-	fonts/MathTestFontPartial1.otf \
-	fonts/MathTestFontPartial2.otf \
-	fonts/MathTestFontPartial3.otf \
-	fonts/MathTestFontPartial4.otf \
-	$(NULL)
-endif # HAVE_FREETYPE
-
-endif # HAVE_OT
+endif
 
 # Tests for header compilation
 TEST_PROGS += \
@@ -94,8 +73,6 @@ TESTS_ENVIRONMENT = \
 	G_DEBUG=gc-friendly \
 	G_SLICE=always-malloc \
 	srcdir=$(srcdir) \
-	G_TEST_SRCDIR=$(abs_srcdir) \
-	G_TEST_BUILDDIR=$(abs_builddir) \
 	$(NULL)
 
 
@@ -151,12 +128,12 @@ check-symbols: symbols-untested.txt
 
 
 
-else # !HAVE_GLIB
+else
 check-am: err-glib
 err-glib:
 	@echo "You need to have glib support enabled to run the tests"
 	@exit 77
-endif # HAVE_GLIB
+endif
 
 .PHONY: check-symbols check-tool check-valgrind
 

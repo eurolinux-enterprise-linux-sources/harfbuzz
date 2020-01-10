@@ -24,10 +24,11 @@
  * Google Author(s): Behdad Esfahbod
  */
 
-#include "hb-private.hh"
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #include "hb.h"
-#include "hb-ot.h"
 #ifdef HAVE_FREETYPE
 #include "hb-ft.h"
 #endif
@@ -44,7 +45,7 @@
 int
 main (int argc, char **argv)
 {
-  hb_blob_t *blob = nullptr;
+  hb_blob_t *blob = NULL;
 
   if (argc != 2) {
     fprintf (stderr, "usage: %s font-file\n", argv[0]);
@@ -60,7 +61,7 @@ main (int argc, char **argv)
     hb_memory_mode_t mm;
 
 #ifdef HAVE_GLIB
-    GMappedFile *mf = g_mapped_file_new (argv[1], false, nullptr);
+    GMappedFile *mf = g_mapped_file_new (argv[1], false, NULL);
     font_data = g_mapped_file_get_contents (mf);
     len = g_mapped_file_get_length (mf);
     destroy = (hb_destroy_func_t) g_mapped_file_unref;
@@ -85,15 +86,14 @@ main (int argc, char **argv)
 
   hb_face_t *face = hb_face_create (blob, 0 /* first face */);
   hb_blob_destroy (blob);
-  blob = nullptr;
+  blob = NULL;
 
   unsigned int upem = hb_face_get_upem (face);
   hb_font_t *font = hb_font_create (face);
   hb_face_destroy (face);
   hb_font_set_scale (font, upem, upem);
-  hb_ot_font_set_funcs (font);
 #ifdef HAVE_FREETYPE
-  //hb_ft_font_set_funcs (font);
+  hb_ft_font_set_funcs (font);
 #endif
 
   hb_buffer_t *buf;
@@ -115,7 +115,7 @@ main (int argc, char **argv)
       ret = false;
 
     hb_buffer_serialize_glyphs (buf, 0, hb_buffer_get_length (buf),
-				out, sizeof (out), nullptr,
+				out, sizeof (out), NULL,
 				font, HB_BUFFER_SERIALIZE_FORMAT_JSON,
 				HB_BUFFER_SERIALIZE_FLAG_DEFAULT);
     puts (out);

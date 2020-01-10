@@ -86,24 +86,21 @@ VMPst	= 39; # VOWEL_MOD_POST
 VMPre	= 23; # VOWEL_MOD_PRE
 SMAbv	= 41; # SYM_MOD_ABOVE
 SMBlw	= 42; # SYM_MOD_BELOW
-CS	= 43; # CONS_WITH_STACKER
 
 
-# Override: Adjoc ZWJ placement. https://github.com/harfbuzz/harfbuzz/issues/542#issuecomment-353169729
-consonant_modifiers = CMAbv* CMBlw* ((ZWJ?.H.ZWJ? B | SUB) VS? CMAbv? CMBlw*)*;
-# Override: Allow two MBlw. https://github.com/harfbuzz/harfbuzz/issues/376
-medial_consonants = MPre? MAbv? MBlw?.MBlw? MPst?;
+consonant_modifiers = CMAbv* CMBlw* ((H B | SUB) VS? CMAbv? CMBlw*)*;
+medial_consonants = MPre? MAbv? MBlw? MPst?;
 dependent_vowels = VPre* VAbv* VBlw* VPst*;
 vowel_modifiers = VMPre* VMAbv* VMBlw* VMPst*;
 final_consonants = FAbv* FBlw* FPst* FM?;
 
 virama_terminated_cluster =
-	(R|CS)? (B | GB) VS?
+	R? (B | GB) VS?
 	consonant_modifiers
 	H
 ;
 standard_cluster =
-	(R|CS)? (B | GB) VS?
+	R? (B | GB) VS?
 	consonant_modifiers
 	medial_consonants
 	dependent_vowels

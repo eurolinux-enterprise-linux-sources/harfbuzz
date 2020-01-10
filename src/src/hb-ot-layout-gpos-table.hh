@@ -51,11 +51,11 @@ enum attach_type_t {
 
 /* Shared Tables: ValueRecord, Anchor Table, and MarkArray */
 
-typedef HBUINT16 Value;
+typedef USHORT Value;
 
 typedef Value ValueRecord[VAR];
 
-struct ValueFormat : HBUINT16
+struct ValueFormat : USHORT
 {
   enum Flags {
     xPlacement	= 0x0001u,	/* Includes horizontal adjustment for placement */
@@ -74,14 +74,14 @@ struct ValueFormat : HBUINT16
 
 /* All fields are options.  Only those available advance the value pointer. */
 #if 0
-  HBINT16		xPlacement;		/* Horizontal adjustment for
+  SHORT		xPlacement;		/* Horizontal adjustment for
 					 * placement--in design units */
-  HBINT16		yPlacement;		/* Vertical adjustment for
+  SHORT		yPlacement;		/* Vertical adjustment for
 					 * placement--in design units */
-  HBINT16		xAdvance;		/* Horizontal adjustment for
+  SHORT		xAdvance;		/* Horizontal adjustment for
 					 * advance--in design units (only used
 					 * for horizontal writing) */
-  HBINT16		yAdvance;		/* Vertical adjustment for advance--in
+  SHORT		yAdvance;		/* Vertical adjustment for advance--in
 					 * design units (only used for vertical
 					 * writing) */
   Offset	xPlaDevice;		/* Offset to Device table for
@@ -103,16 +103,17 @@ struct ValueFormat : HBUINT16
   inline unsigned int get_size (void) const
   { return get_len () * Value::static_size; }
 
-  void apply_value (hb_ot_apply_context_t   *c,
+  void apply_value (hb_font_t            *font,
+		    hb_direction_t        direction,
 		    const void           *base,
 		    const Value          *values,
 		    hb_glyph_position_t  &glyph_pos) const
   {
+    unsigned int x_ppem, y_ppem;
     unsigned int format = *this;
-    if (!format) return;
+    hb_bool_t horizontal = HB_DIRECTION_IS_HORIZONTAL (direction);
 
-    hb_font_t *font = c->font;
-    hb_bool_t horizontal = HB_DIRECTION_IS_HORIZONTAL (c->direction);
+    if (!format) return;
 
     if (format & xPlacement) glyph_pos.x_offset  += font->em_scale_x (get_short (values++));
     if (format & yPlacement) glyph_pos.y_offset  += font->em_scale_y (get_short (values++));
@@ -128,29 +129,27 @@ struct ValueFormat : HBUINT16
 
     if (!has_device ()) return;
 
-    bool use_x_device = font->x_ppem || font->num_coords;
-    bool use_y_device = font->y_ppem || font->num_coords;
+    x_ppem = font->x_ppem;
+    y_ppem = font->y_ppem;
 
-    if (!use_x_device && !use_y_device) return;
-
-    const VariationStore &store = c->var_store;
+    if (!x_ppem && !y_ppem) return;
 
     /* pixel -> fractional pixel */
     if (format & xPlaDevice) {
-      if (use_x_device) glyph_pos.x_offset  += (base + get_device (values)).get_x_delta (font, store);
+      if (x_ppem) glyph_pos.x_offset  += (base + get_device (values)).get_x_delta (font);
       values++;
     }
     if (format & yPlaDevice) {
-      if (use_y_device) glyph_pos.y_offset  += (base + get_device (values)).get_y_delta (font, store);
+      if (y_ppem) glyph_pos.y_offset  += (base + get_device (values)).get_y_delta (font);
       values++;
     }
     if (format & xAdvDevice) {
-      if (horizontal && use_x_device) glyph_pos.x_advance += (base + get_device (values)).get_x_delta (font, store);
+      if (horizontal && x_ppem) glyph_pos.x_advance += (base + get_device (values)).get_x_delta (font);
       values++;
     }
     if (format & yAdvDevice) {
       /* y_advance values grow downward but font-space grows upward, hence negation */
-      if (!horizontal && use_y_device) glyph_pos.y_advance -= (base + get_device (values)).get_y_delta (font, store);
+      if (!horizontal && y_ppem) glyph_pos.y_advance -= (base + get_device (values)).get_y_delta (font);
       values++;
     }
   }
@@ -178,8 +177,8 @@ struct ValueFormat : HBUINT16
   static inline const OffsetTo<Device>& get_device (const Value* value)
   { return *CastP<OffsetTo<Device> > (value); }
 
-  static inline const HBINT16& get_short (const Value* value)
-  { return *CastP<HBINT16> (value); }
+  static inline const SHORT& get_short (const Value* value)
+  { return *CastP<SHORT> (value); }
 
   public:
 
@@ -232,12 +231,11 @@ struct ValueFormat : HBUINT16
 
 struct AnchorFormat1
 {
-  inline void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id HB_UNUSED,
-			  float *x, float *y) const
+  inline void get_anchor (hb_font_t *font, hb_codepoint_t glyph_id HB_UNUSED,
+			  hb_position_t *x, hb_position_t *y) const
   {
-    hb_font_t *font = c->font;
-    *x = font->em_fscale_x (xCoordinate);
-    *y = font->em_fscale_y (yCoordinate);
+      *x = font->em_scale_x (xCoordinate);
+      *y = font->em_scale_y (yCoordinate);
   }
 
   inline bool sanitize (hb_sanitize_context_t *c) const
@@ -247,28 +245,27 @@ struct AnchorFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
-  HBINT16		xCoordinate;		/* Horizontal value--in design units */
-  HBINT16		yCoordinate;		/* Vertical value--in design units */
+  USHORT	format;			/* Format identifier--format = 1 */
+  SHORT		xCoordinate;		/* Horizontal value--in design units */
+  SHORT		yCoordinate;		/* Vertical value--in design units */
   public:
   DEFINE_SIZE_STATIC (6);
 };
 
 struct AnchorFormat2
 {
-  inline void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id,
-			  float *x, float *y) const
+  inline void get_anchor (hb_font_t *font, hb_codepoint_t glyph_id,
+			  hb_position_t *x, hb_position_t *y) const
   {
-    hb_font_t *font = c->font;
-    unsigned int x_ppem = font->x_ppem;
-    unsigned int y_ppem = font->y_ppem;
-    hb_position_t cx, cy;
-    hb_bool_t ret;
+      unsigned int x_ppem = font->x_ppem;
+      unsigned int y_ppem = font->y_ppem;
+      hb_position_t cx, cy;
+      hb_bool_t ret;
 
-    ret = (x_ppem || y_ppem) &&
-	   font->get_glyph_contour_point_for_origin (glyph_id, anchorPoint, HB_DIRECTION_LTR, &cx, &cy);
-    *x = ret && x_ppem ? cx : font->em_fscale_x (xCoordinate);
-    *y = ret && y_ppem ? cy : font->em_fscale_y (yCoordinate);
+      ret = (x_ppem || y_ppem) &&
+             font->get_glyph_contour_point_for_origin (glyph_id, anchorPoint, HB_DIRECTION_LTR, &cx, &cy);
+      *x = ret && x_ppem ? cx : font->em_scale_x (xCoordinate);
+      *y = ret && y_ppem ? cy : font->em_scale_y (yCoordinate);
   }
 
   inline bool sanitize (hb_sanitize_context_t *c) const
@@ -278,27 +275,26 @@ struct AnchorFormat2
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 2 */
-  HBINT16		xCoordinate;		/* Horizontal value--in design units */
-  HBINT16		yCoordinate;		/* Vertical value--in design units */
-  HBUINT16	anchorPoint;		/* Index to glyph contour point */
+  USHORT	format;			/* Format identifier--format = 2 */
+  SHORT		xCoordinate;		/* Horizontal value--in design units */
+  SHORT		yCoordinate;		/* Vertical value--in design units */
+  USHORT	anchorPoint;		/* Index to glyph contour point */
   public:
   DEFINE_SIZE_STATIC (8);
 };
 
 struct AnchorFormat3
 {
-  inline void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id HB_UNUSED,
-			  float *x, float *y) const
+  inline void get_anchor (hb_font_t *font, hb_codepoint_t glyph_id HB_UNUSED,
+			  hb_position_t *x, hb_position_t *y) const
   {
-    hb_font_t *font = c->font;
-    *x = font->em_fscale_x (xCoordinate);
-    *y = font->em_fscale_y (yCoordinate);
+      *x = font->em_scale_x (xCoordinate);
+      *y = font->em_scale_y (yCoordinate);
 
-    if (font->x_ppem || font->num_coords)
-      *x += (this+xDeviceTable).get_x_delta (font, c->var_store);
-    if (font->y_ppem || font->num_coords)
-      *y += (this+yDeviceTable).get_y_delta (font, c->var_store);
+      if (font->x_ppem)
+	*x += (this+xDeviceTable).get_x_delta (font);
+      if (font->y_ppem)
+	*y += (this+yDeviceTable).get_x_delta (font);
   }
 
   inline bool sanitize (hb_sanitize_context_t *c) const
@@ -308,9 +304,9 @@ struct AnchorFormat3
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 3 */
-  HBINT16		xCoordinate;		/* Horizontal value--in design units */
-  HBINT16		yCoordinate;		/* Vertical value--in design units */
+  USHORT	format;			/* Format identifier--format = 3 */
+  SHORT		xCoordinate;		/* Horizontal value--in design units */
+  SHORT		yCoordinate;		/* Vertical value--in design units */
   OffsetTo<Device>
 		xDeviceTable;		/* Offset to Device table for X
 					 * coordinate-- from beginning of
@@ -325,15 +321,15 @@ struct AnchorFormat3
 
 struct Anchor
 {
-  inline void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id,
-			  float *x, float *y) const
+  inline void get_anchor (hb_font_t *font, hb_codepoint_t glyph_id,
+			  hb_position_t *x, hb_position_t *y) const
   {
     *x = *y = 0;
     switch (u.format) {
-    case 1: u.format1.get_anchor (c, glyph_id, x, y); return;
-    case 2: u.format2.get_anchor (c, glyph_id, x, y); return;
-    case 3: u.format3.get_anchor (c, glyph_id, x, y); return;
-    default:					      return;
+    case 1: u.format1.get_anchor (font, glyph_id, x, y); return;
+    case 2: u.format2.get_anchor (font, glyph_id, x, y); return;
+    case 3: u.format3.get_anchor (font, glyph_id, x, y); return;
+    default:						 return;
     }
   }
 
@@ -351,7 +347,7 @@ struct Anchor
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   AnchorFormat1		format1;
   AnchorFormat2		format2;
   AnchorFormat3		format3;
@@ -374,7 +370,7 @@ struct AnchorMatrix
   {
     TRACE_SANITIZE (this);
     if (!c->check_struct (this)) return_trace (false);
-    if (unlikely (_hb_unsigned_int_mul_overflows (rows, cols))) return_trace (false);
+    if (unlikely (rows > 0 && cols >= ((unsigned int) -1) / rows)) return_trace (false);
     unsigned int count = rows * cols;
     if (!c->check_array (matrixZ, matrixZ[0].static_size, count)) return_trace (false);
     for (unsigned int i = 0; i < count; i++)
@@ -382,7 +378,7 @@ struct AnchorMatrix
     return_trace (true);
   }
 
-  HBUINT16	rows;			/* Number of rows */
+  USHORT	rows;			/* Number of rows */
   protected:
   OffsetTo<Anchor>
 		matrixZ[VAR];		/* Matrix of offsets to Anchor tables--
@@ -403,7 +399,7 @@ struct MarkRecord
   }
 
   protected:
-  HBUINT16	klass;			/* Class defined for this mark */
+  USHORT	klass;			/* Class defined for this mark */
   OffsetTo<Anchor>
 		markAnchor;		/* Offset to Anchor table--from
 					 * beginning of MarkArray table */
@@ -413,7 +409,7 @@ struct MarkRecord
 
 struct MarkArray : ArrayOf<MarkRecord>	/* Array of MarkRecords--in Coverage order */
 {
-  inline bool apply (hb_ot_apply_context_t *c,
+  inline bool apply (hb_apply_context_t *c,
 		     unsigned int mark_index, unsigned int glyph_index,
 		     const AnchorMatrix &anchors, unsigned int class_count,
 		     unsigned int glyph_pos) const
@@ -430,15 +426,14 @@ struct MarkArray : ArrayOf<MarkRecord>	/* Array of MarkRecords--in Coverage orde
      * return false such that the subsequent subtables have a chance at it. */
     if (unlikely (!found)) return_trace (false);
 
-    float mark_x, mark_y, base_x, base_y;
+    hb_position_t mark_x, mark_y, base_x, base_y;
 
-    buffer->unsafe_to_break (glyph_pos, buffer->idx);
-    mark_anchor.get_anchor (c, buffer->cur().codepoint, &mark_x, &mark_y);
-    glyph_anchor.get_anchor (c, buffer->info[glyph_pos].codepoint, &base_x, &base_y);
+    mark_anchor.get_anchor (c->font, buffer->cur().codepoint, &mark_x, &mark_y);
+    glyph_anchor.get_anchor (c->font, buffer->info[glyph_pos].codepoint, &base_x, &base_y);
 
     hb_glyph_position_t &o = buffer->cur_pos();
-    o.x_offset = round (base_x - mark_x);
-    o.y_offset = round (base_y - mark_y);
+    o.x_offset = base_x - mark_x;
+    o.y_offset = base_y - mark_y;
     o.attach_type() = ATTACH_TYPE_MARK;
     o.attach_chain() = (int) glyph_pos - (int) buffer->idx;
     buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_GPOS_ATTACHMENT;
@@ -462,7 +457,7 @@ struct SinglePosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+coverage).add_coverage (c->input))) return;
+    (this+coverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -470,14 +465,15 @@ struct SinglePosFormat1
     return this+coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
     unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint);
     if (likely (index == NOT_COVERED)) return_trace (false);
 
-    valueFormat.apply_value (c, this, values, buffer->cur_pos());
+    valueFormat.apply_value (c->font, c->direction, this,
+			     values, buffer->cur_pos());
 
     buffer->idx++;
     return_trace (true);
@@ -492,7 +488,7 @@ struct SinglePosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		coverage;		/* Offset to Coverage table--from
 					 * beginning of subtable */
@@ -510,7 +506,7 @@ struct SinglePosFormat2
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+coverage).add_coverage (c->input))) return;
+    (this+coverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -518,7 +514,7 @@ struct SinglePosFormat2
     return this+coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
@@ -527,7 +523,7 @@ struct SinglePosFormat2
 
     if (likely (index >= valueCount)) return_trace (false);
 
-    valueFormat.apply_value (c, this,
+    valueFormat.apply_value (c->font, c->direction, this,
 			     &values[index * valueFormat.get_len ()],
 			     buffer->cur_pos());
 
@@ -544,13 +540,13 @@ struct SinglePosFormat2
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 2 */
+  USHORT	format;			/* Format identifier--format = 2 */
   OffsetTo<Coverage>
 		coverage;		/* Offset to Coverage table--from
 					 * beginning of subtable */
   ValueFormat	valueFormat;		/* Defines the types of data in the
 					 * ValueRecord */
-  HBUINT16	valueCount;		/* Number of ValueRecords */
+  USHORT	valueCount;		/* Number of ValueRecords */
   ValueRecord	values;			/* Array of ValueRecords--positioning
 					 * values applied to glyphs */
   public:
@@ -573,7 +569,7 @@ struct SinglePos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   SinglePosFormat1	format1;
   SinglePosFormat2	format2;
   } u;
@@ -604,13 +600,18 @@ struct PairSet
     TRACE_COLLECT_GLYPHS (this);
     unsigned int len1 = valueFormats[0].get_len ();
     unsigned int len2 = valueFormats[1].get_len ();
-    unsigned int record_size = HBUINT16::static_size * (1 + len1 + len2);
+    unsigned int record_size = USHORT::static_size * (1 + len1 + len2);
 
     const PairValueRecord *record = CastP<PairValueRecord> (arrayZ);
-    c->input->add_array (&record->secondGlyph, len, record_size);
+    unsigned int count = len;
+    for (unsigned int i = 0; i < count; i++)
+    {
+      c->input->add (record->secondGlyph);
+      record = &StructAtOffset<PairValueRecord> (record, record_size);
+    }
   }
 
-  inline bool apply (hb_ot_apply_context_t *c,
+  inline bool apply (hb_apply_context_t *c,
 		     const ValueFormat *valueFormats,
 		     unsigned int pos) const
   {
@@ -618,7 +619,7 @@ struct PairSet
     hb_buffer_t *buffer = c->buffer;
     unsigned int len1 = valueFormats[0].get_len ();
     unsigned int len2 = valueFormats[1].get_len ();
-    unsigned int record_size = HBUINT16::static_size * (1 + len1 + len2);
+    unsigned int record_size = USHORT::static_size * (1 + len1 + len2);
 
     const PairValueRecord *record_array = CastP<PairValueRecord> (arrayZ);
     unsigned int count = len;
@@ -639,9 +640,10 @@ struct PairSet
         min = mid + 1;
       else
       {
-        buffer->unsafe_to_break (buffer->idx, pos + 1);
-	valueFormats[0].apply_value (c, this, &record->values[0], buffer->cur_pos());
-	valueFormats[1].apply_value (c, this, &record->values[len1], buffer->pos[pos]);
+	valueFormats[0].apply_value (c->font, c->direction, this,
+				     &record->values[0], buffer->cur_pos());
+	valueFormats[1].apply_value (c->font, c->direction, this,
+				     &record->values[len1], buffer->pos[pos]);
 	if (len2)
 	  pos++;
 	buffer->idx = pos;
@@ -663,7 +665,7 @@ struct PairSet
   {
     TRACE_SANITIZE (this);
     if (!(c->check_struct (this)
-       && c->check_array (arrayZ, HBUINT16::static_size * closure->stride, len))) return_trace (false);
+       && c->check_array (arrayZ, USHORT::static_size * closure->stride, len))) return_trace (false);
 
     unsigned int count = len;
     const PairValueRecord *record = CastP<PairValueRecord> (arrayZ);
@@ -672,8 +674,8 @@ struct PairSet
   }
 
   protected:
-  HBUINT16	len;			/* Number of PairValueRecords */
-  HBUINT16	arrayZ[VAR];		/* Array of PairValueRecords--ordered
+  USHORT	len;			/* Number of PairValueRecords */
+  USHORT	arrayZ[VAR];		/* Array of PairValueRecords--ordered
 					 * by GlyphID of the second glyph */
   public:
   DEFINE_SIZE_ARRAY (2, arrayZ);
@@ -684,10 +686,10 @@ struct PairPosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+coverage).add_coverage (c->input))) return;
+    (this+coverage).add_coverage (c->input);
     unsigned int count = pairSet.len;
     for (unsigned int i = 0; i < count; i++)
-      (this+pairSet[i]).collect_glyphs (c, valueFormat);
+      (this+pairSet[i]).collect_glyphs (c, &valueFormat1);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -695,18 +697,18 @@ struct PairPosFormat1
     return this+coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
     unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint);
     if (likely (index == NOT_COVERED)) return_trace (false);
 
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     if (!skippy_iter.next ()) return_trace (false);
 
-    return_trace ((this+pairSet[index]).apply (c, valueFormat, skippy_iter.idx));
+    return_trace ((this+pairSet[index]).apply (c, &valueFormat1, skippy_iter.idx));
   }
 
   inline bool sanitize (hb_sanitize_context_t *c) const
@@ -715,11 +717,11 @@ struct PairPosFormat1
 
     if (!c->check_struct (this)) return_trace (false);
 
-    unsigned int len1 = valueFormat[0].get_len ();
-    unsigned int len2 = valueFormat[1].get_len ();
+    unsigned int len1 = valueFormat1.get_len ();
+    unsigned int len2 = valueFormat2.get_len ();
     PairSet::sanitize_closure_t closure = {
       this,
-      valueFormat,
+      &valueFormat1,
       len1,
       1 + len1 + len2
     };
@@ -728,14 +730,14 @@ struct PairPosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		coverage;		/* Offset to Coverage table--from
 					 * beginning of subtable */
-  ValueFormat	valueFormat[2];		/* [0] Defines the types of data in
+  ValueFormat	valueFormat1;		/* Defines the types of data in
 					 * ValueRecord1--for the first glyph
 					 * in the pair--may be zero (0) */
-					/* [1] Defines the types of data in
+  ValueFormat	valueFormat2;		/* Defines the types of data in
 					 * ValueRecord2--for the second glyph
 					 * in the pair--may be zero (0) */
   OffsetArrayOf<PairSet>
@@ -750,8 +752,17 @@ struct PairPosFormat2
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+coverage).add_coverage (c->input))) return;
-    if (unlikely (!(this+classDef2).add_coverage (c->input))) return;
+    (this+coverage).add_coverage (c->input);
+
+    unsigned int count1 = class1Count;
+    const ClassDef &klass1 = this+classDef1;
+    for (unsigned int i = 0; i < count1; i++)
+      klass1.add_class (c->input, i);
+
+    unsigned int count2 = class2Count;
+    const ClassDef &klass2 = this+classDef2;
+    for (unsigned int i = 0; i < count2; i++)
+      klass2.add_class (c->input, i);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -759,14 +770,14 @@ struct PairPosFormat2
     return this+coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
     unsigned int index = (this+coverage).get_coverage  (buffer->cur().codepoint);
     if (likely (index == NOT_COVERED)) return_trace (false);
 
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     if (!skippy_iter.next ()) return_trace (false);
 
@@ -778,10 +789,11 @@ struct PairPosFormat2
     unsigned int klass2 = (this+classDef2).get_class (buffer->info[skippy_iter.idx].codepoint);
     if (unlikely (klass1 >= class1Count || klass2 >= class2Count)) return_trace (false);
 
-    buffer->unsafe_to_break (buffer->idx, skippy_iter.idx + 1);
     const Value *v = &values[record_len * (klass1 * class2Count + klass2)];
-    valueFormat1.apply_value (c, this, v, buffer->cur_pos());
-    valueFormat2.apply_value (c, this, v + len1, buffer->pos[skippy_iter.idx]);
+    valueFormat1.apply_value (c->font, c->direction, this,
+			      v, buffer->cur_pos());
+    valueFormat2.apply_value (c->font, c->direction, this,
+			      v + len1, buffer->pos[skippy_iter.idx]);
 
     buffer->idx = skippy_iter.idx;
     if (len2)
@@ -809,7 +821,7 @@ struct PairPosFormat2
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 2 */
+  USHORT	format;			/* Format identifier--format = 2 */
   OffsetTo<Coverage>
 		coverage;		/* Offset to Coverage table--from
 					 * beginning of subtable */
@@ -827,9 +839,9 @@ struct PairPosFormat2
 		classDef2;		/* Offset to ClassDef table--from
 					 * beginning of PairPos subtable--for
 					 * the second glyph of the pair */
-  HBUINT16	class1Count;		/* Number of classes in ClassDef1
+  USHORT	class1Count;		/* Number of classes in ClassDef1
 					 * table--includes Class0 */
-  HBUINT16	class2Count;		/* Number of classes in ClassDef2
+  USHORT	class2Count;		/* Number of classes in ClassDef2
 					 * table--includes Class0 */
   ValueRecord	values;			/* Matrix of value pairs:
 					 * class1-major, class2-minor,
@@ -854,7 +866,7 @@ struct PairPos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   PairPosFormat1	format1;
   PairPosFormat2	format2;
   } u;
@@ -892,7 +904,7 @@ struct CursivePosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+coverage).add_coverage (c->input))) return;
+    (this+coverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -900,7 +912,7 @@ struct CursivePosFormat1
     return this+coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
@@ -908,7 +920,7 @@ struct CursivePosFormat1
     const EntryExitRecord &this_record = entryExitRecord[(this+coverage).get_coverage  (buffer->cur().codepoint)];
     if (!this_record.exitAnchor) return_trace (false);
 
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     if (!skippy_iter.next ()) return_trace (false);
 
@@ -918,10 +930,9 @@ struct CursivePosFormat1
     unsigned int i = buffer->idx;
     unsigned int j = skippy_iter.idx;
 
-    buffer->unsafe_to_break (i, j);
-    float entry_x, entry_y, exit_x, exit_y;
-    (this+this_record.exitAnchor).get_anchor (c, buffer->info[i].codepoint, &exit_x, &exit_y);
-    (this+next_record.entryAnchor).get_anchor (c, buffer->info[j].codepoint, &entry_x, &entry_y);
+    hb_position_t entry_x, entry_y, exit_x, exit_y;
+    (this+this_record.exitAnchor).get_anchor (c->font, buffer->info[i].codepoint, &exit_x, &exit_y);
+    (this+next_record.entryAnchor).get_anchor (c->font, buffer->info[j].codepoint, &entry_x, &entry_y);
 
     hb_glyph_position_t *pos = buffer->pos;
 
@@ -929,32 +940,32 @@ struct CursivePosFormat1
     /* Main-direction adjustment */
     switch (c->direction) {
       case HB_DIRECTION_LTR:
-	pos[i].x_advance  = round (exit_x) + pos[i].x_offset;
+	pos[i].x_advance  =  exit_x + pos[i].x_offset;
 
-	d = round (entry_x) + pos[j].x_offset;
+	d = entry_x + pos[j].x_offset;
 	pos[j].x_advance -= d;
 	pos[j].x_offset  -= d;
 	break;
       case HB_DIRECTION_RTL:
-	d = round (exit_x) + pos[i].x_offset;
+	d = exit_x + pos[i].x_offset;
 	pos[i].x_advance -= d;
 	pos[i].x_offset  -= d;
 
-	pos[j].x_advance  = round (entry_x) + pos[j].x_offset;
+	pos[j].x_advance  =  entry_x + pos[j].x_offset;
 	break;
       case HB_DIRECTION_TTB:
-	pos[i].y_advance  = round (exit_y) + pos[i].y_offset;
+	pos[i].y_advance  =  exit_y + pos[i].y_offset;
 
-	d = round (entry_y) + pos[j].y_offset;
+	d = entry_y + pos[j].y_offset;
 	pos[j].y_advance -= d;
 	pos[j].y_offset  -= d;
 	break;
       case HB_DIRECTION_BTT:
-	d = round (exit_y) + pos[i].y_offset;
+	d = exit_y + pos[i].y_offset;
 	pos[i].y_advance -= d;
 	pos[i].y_offset  -= d;
 
-	pos[j].y_advance  = round (entry_y);
+	pos[j].y_advance  =  entry_y;
 	break;
       case HB_DIRECTION_INVALID:
       default:
@@ -1008,7 +1019,7 @@ struct CursivePosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		coverage;		/* Offset to Coverage table--from
 					 * beginning of subtable */
@@ -1034,7 +1045,7 @@ struct CursivePos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   CursivePosFormat1	format1;
   } u;
 };
@@ -1050,8 +1061,8 @@ struct MarkBasePosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+markCoverage).add_coverage (c->input))) return;
-    if (unlikely (!(this+baseCoverage).add_coverage (c->input))) return;
+    (this+markCoverage).add_coverage (c->input);
+    (this+baseCoverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -1059,7 +1070,7 @@ struct MarkBasePosFormat1
     return this+markCoverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
@@ -1067,15 +1078,13 @@ struct MarkBasePosFormat1
     if (likely (mark_index == NOT_COVERED)) return_trace (false);
 
     /* Now we search backwards for a non-mark glyph */
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     skippy_iter.set_lookup_props (LookupFlag::IgnoreMarks);
     do {
       if (!skippy_iter.prev ()) return_trace (false);
       /* We only want to attach to the first of a MultipleSubst sequence.  Reject others. */
-      if (!_hb_glyph_info_multiplied (&buffer->info[skippy_iter.idx]) ||
-	  0 == _hb_glyph_info_get_lig_comp (&buffer->info[skippy_iter.idx]))
-	break;
+      if (0 == _hb_glyph_info_get_lig_comp (&buffer->info[skippy_iter.idx])) break;
       skippy_iter.reject ();
     } while (1);
 
@@ -1099,14 +1108,14 @@ struct MarkBasePosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		markCoverage;		/* Offset to MarkCoverage table--from
 					 * beginning of MarkBasePos subtable */
   OffsetTo<Coverage>
 		baseCoverage;		/* Offset to BaseCoverage table--from
 					 * beginning of MarkBasePos subtable */
-  HBUINT16	classCount;		/* Number of classes defined for marks */
+  USHORT	classCount;		/* Number of classes defined for marks */
   OffsetTo<MarkArray>
 		markArray;		/* Offset to MarkArray table--from
 					 * beginning of MarkBasePos subtable */
@@ -1132,7 +1141,7 @@ struct MarkBasePos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   MarkBasePosFormat1	format1;
   } u;
 };
@@ -1153,8 +1162,8 @@ struct MarkLigPosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+markCoverage).add_coverage (c->input))) return;
-    if (unlikely (!(this+ligatureCoverage).add_coverage (c->input))) return;
+    (this+markCoverage).add_coverage (c->input);
+    (this+ligatureCoverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -1162,7 +1171,7 @@ struct MarkLigPosFormat1
     return this+markCoverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
@@ -1170,7 +1179,7 @@ struct MarkLigPosFormat1
     if (likely (mark_index == NOT_COVERED)) return_trace (false);
 
     /* Now we search backwards for a non-mark glyph */
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     skippy_iter.set_lookup_props (LookupFlag::IgnoreMarks);
     if (!skippy_iter.prev ()) return_trace (false);
@@ -1216,7 +1225,7 @@ struct MarkLigPosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		markCoverage;		/* Offset to Mark Coverage table--from
 					 * beginning of MarkLigPos subtable */
@@ -1224,7 +1233,7 @@ struct MarkLigPosFormat1
 		ligatureCoverage;	/* Offset to Ligature Coverage
 					 * table--from beginning of MarkLigPos
 					 * subtable */
-  HBUINT16	classCount;		/* Number of defined mark classes */
+  USHORT	classCount;		/* Number of defined mark classes */
   OffsetTo<MarkArray>
 		markArray;		/* Offset to MarkArray table--from
 					 * beginning of MarkLigPos subtable */
@@ -1250,7 +1259,7 @@ struct MarkLigPos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   MarkLigPosFormat1	format1;
   } u;
 };
@@ -1266,8 +1275,8 @@ struct MarkMarkPosFormat1
   inline void collect_glyphs (hb_collect_glyphs_context_t *c) const
   {
     TRACE_COLLECT_GLYPHS (this);
-    if (unlikely (!(this+mark1Coverage).add_coverage (c->input))) return;
-    if (unlikely (!(this+mark2Coverage).add_coverage (c->input))) return;
+    (this+mark1Coverage).add_coverage (c->input);
+    (this+mark2Coverage).add_coverage (c->input);
   }
 
   inline const Coverage &get_coverage (void) const
@@ -1275,7 +1284,7 @@ struct MarkMarkPosFormat1
     return this+mark1Coverage;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     hb_buffer_t *buffer = c->buffer;
@@ -1283,7 +1292,7 @@ struct MarkMarkPosFormat1
     if (likely (mark1_index == NOT_COVERED)) return_trace (false);
 
     /* now we search backwards for a suitable mark glyph until a non-mark glyph */
-    hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
+    hb_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
     skippy_iter.reset (buffer->idx, 1);
     skippy_iter.set_lookup_props (c->lookup_props & ~LookupFlag::IgnoreFlags);
     if (!skippy_iter.prev ()) return_trace (false);
@@ -1330,7 +1339,7 @@ struct MarkMarkPosFormat1
   }
 
   protected:
-  HBUINT16	format;			/* Format identifier--format = 1 */
+  USHORT	format;			/* Format identifier--format = 1 */
   OffsetTo<Coverage>
 		mark1Coverage;		/* Offset to Combining Mark1 Coverage
 					 * table--from beginning of MarkMarkPos
@@ -1339,7 +1348,7 @@ struct MarkMarkPosFormat1
 		mark2Coverage;		/* Offset to Combining Mark2 Coverage
 					 * table--from beginning of MarkMarkPos
 					 * subtable */
-  HBUINT16	classCount;		/* Number of defined mark classes */
+  USHORT	classCount;		/* Number of defined mark classes */
   OffsetTo<MarkArray>
 		mark1Array;		/* Offset to Mark1Array table--from
 					 * beginning of MarkMarkPos subtable */
@@ -1365,7 +1374,7 @@ struct MarkMarkPos
 
   protected:
   union {
-  HBUINT16		format;		/* Format identifier */
+  USHORT		format;		/* Format identifier */
   MarkMarkPosFormat1	format1;
   } u;
 };
@@ -1424,7 +1433,7 @@ struct PosLookupSubTable
 
   protected:
   union {
-  HBUINT16		sub_format;
+  USHORT		sub_format;
   SinglePos		single;
   PairPos		pair;
   CursivePos		cursive;
@@ -1450,7 +1459,7 @@ struct PosLookup : Lookup
     return false;
   }
 
-  inline bool apply (hb_ot_apply_context_t *c) const
+  inline bool apply (hb_apply_context_t *c) const
   {
     TRACE_APPLY (this);
     return_trace (dispatch (c));
@@ -1469,7 +1478,7 @@ struct PosLookup : Lookup
     dispatch (&c);
   }
 
-  static bool apply_recurse_func (hb_ot_apply_context_t *c, unsigned int lookup_index);
+  static bool apply_recurse_func (hb_apply_context_t *c, unsigned int lookup_index);
 
   template <typename context_t>
   static inline typename context_t::return_t dispatch_recurse_func (context_t *c, unsigned int lookup_index);
@@ -1510,6 +1519,8 @@ struct GPOS : GSUBGPOS
     const OffsetTo<PosLookupList> &list = CastR<OffsetTo<PosLookupList> > (lookupList);
     return_trace (list.sanitize (c, this));
   }
+  public:
+  DEFINE_SIZE_STATIC (10);
 };
 
 
@@ -1621,7 +1632,7 @@ template <typename context_t>
   return l.dispatch (c);
 }
 
-/*static*/ inline bool PosLookup::apply_recurse_func (hb_ot_apply_context_t *c, unsigned int lookup_index)
+/*static*/ inline bool PosLookup::apply_recurse_func (hb_apply_context_t *c, unsigned int lookup_index)
 {
   const GPOS &gpos = *(hb_ot_layout_from_face (c->face)->gpos);
   const PosLookup &l = gpos.get_lookup (lookup_index);

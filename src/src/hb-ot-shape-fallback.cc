@@ -210,7 +210,7 @@ position_mark (const hb_ot_shape_plan_t *plan,
   pos.x_offset = pos.y_offset = 0;
 
 
-  /* We don't position LEFT and RIGHT marks. */
+  /* We dont position LEFT and RIGHT marks. */
 
   /* X positioning */
   switch (combining_class)
@@ -218,10 +218,10 @@ position_mark (const hb_ot_shape_plan_t *plan,
     case HB_UNICODE_COMBINING_CLASS_DOUBLE_BELOW:
     case HB_UNICODE_COMBINING_CLASS_DOUBLE_ABOVE:
       if (buffer->props.direction == HB_DIRECTION_LTR) {
-	pos.x_offset += base_extents.x_bearing + base_extents.width - mark_extents.width / 2 - mark_extents.x_bearing;
+	pos.x_offset += base_extents.x_bearing - mark_extents.width / 2 - mark_extents.x_bearing;
         break;
       } else if (buffer->props.direction == HB_DIRECTION_RTL) {
-	pos.x_offset += base_extents.x_bearing - mark_extents.width / 2 - mark_extents.x_bearing;
+	pos.x_offset += base_extents.x_bearing + base_extents.width - mark_extents.width / 2 - mark_extents.x_bearing;
         break;
       }
       HB_FALLTHROUGH;
@@ -307,9 +307,6 @@ position_around_base (const hb_ot_shape_plan_t *plan,
 		      unsigned int end)
 {
   hb_direction_t horiz_dir = HB_DIRECTION_INVALID;
-
-  buffer->unsafe_to_break (base, end);
-
   hb_glyph_extents_t base_extents;
   if (!font->get_glyph_extents (buffer->info[base].codepoint,
 				&base_extents))
@@ -442,10 +439,10 @@ _hb_ot_shape_fallback_kern (const hb_ot_shape_plan_t *plan,
 {
   if (!plan->has_kern) return;
 
-  OT::hb_ot_apply_context_t c (1, font, buffer);
+  OT::hb_apply_context_t c (1, font, buffer);
   c.set_lookup_mask (plan->kern_mask);
   c.set_lookup_props (OT::LookupFlag::IgnoreMarks);
-  OT::hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c.iter_input;
+  OT::hb_apply_context_t::skipping_iterator_t &skippy_iter = c.iter_input;
   skippy_iter.init (&c);
 
   unsigned int count = buffer->len;
@@ -473,7 +470,6 @@ _hb_ot_shape_fallback_kern (const hb_ot_shape_plan_t *plan,
       pos[idx].x_advance += kern1;
       pos[skippy_iter.idx].x_advance += kern2;
       pos[skippy_iter.idx].x_offset += kern2;
-      buffer->unsafe_to_break (idx, skippy_iter.idx + 1);
     }
 
     if (y_kern)
@@ -483,7 +479,6 @@ _hb_ot_shape_fallback_kern (const hb_ot_shape_plan_t *plan,
       pos[idx].y_advance += kern1;
       pos[skippy_iter.idx].y_advance += kern2;
       pos[skippy_iter.idx].y_offset += kern2;
-      buffer->unsafe_to_break (idx, skippy_iter.idx + 1);
     }
 
     idx = skippy_iter.idx;

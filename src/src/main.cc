@@ -24,6 +24,7 @@
  * Red Hat Author(s): Behdad Esfahbod
  */
 
+#include "hb-mutex-private.hh"
 #include "hb-open-file-private.hh"
 #include "hb-ot-layout-gdef-table.hh"
 #include "hb-ot-layout-gsubgpos-private.hh"
@@ -37,7 +38,6 @@
 
 using namespace OT;
 
-const void * const OT::_hb_NullPool[HB_NULL_POOL_SIZE / sizeof (void *)] = {};
 
 int
 main (int argc, char **argv)
@@ -47,11 +47,11 @@ main (int argc, char **argv)
     exit (1);
   }
 
-  const char *font_data = nullptr;
+  const char *font_data = NULL;
   int len = 0;
 
 #ifdef HAVE_GLIB
-  GMappedFile *mf = g_mapped_file_new (argv[1], false, nullptr);
+  GMappedFile *mf = g_mapped_file_new (argv[1], false, NULL);
   font_data = g_mapped_file_get_contents (mf);
   len = g_mapped_file_get_length (mf);
 #else
@@ -105,8 +105,8 @@ main (int argc, char **argv)
 
       switch (table.tag) {
 
-      case HB_OT_TAG_GSUB:
-      case HB_OT_TAG_GPOS:
+      case GSUBGPOS::GSUBTag:
+      case GSUBGPOS::GPOSTag:
 	{
 
 	const GSUBGPOS &g = *CastP<GSUBGPOS> (font_data + table.offset);

@@ -1,12 +1,6 @@
 # Process this file with automake to produce Makefile.in
 
-NULL =
-EXTRA_DIST =
 SUBDIRS = api shaping fuzzing
-
-EXTRA_DIST += \
-	CMakeLists.txt \
-	$(NULL)
 
 # Convenience targets:
 lib:

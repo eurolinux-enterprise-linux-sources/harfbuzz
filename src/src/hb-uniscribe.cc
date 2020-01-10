@@ -24,8 +24,6 @@
  * Google Author(s): Behdad Esfahbod
  */
 
-#include "hb-private.hh"
-#include "hb-debug.hh"
 #define HB_SHAPER uniscribe
 #include "hb-shaper-impl-private.hh"
 
@@ -38,6 +36,11 @@
 #include "hb-open-file-private.hh"
 #include "hb-ot-name-table.hh"
 #include "hb-ot-tag.h"
+
+
+#ifndef HB_DEBUG_UNISCRIBE
+#define HB_DEBUG_UNISCRIBE (HB_DEBUG+0)
+#endif
 
 
 static inline uint16_t hb_uint16_swap (const uint16_t v)
@@ -199,9 +202,9 @@ struct hb_uniscribe_shaper_funcs_t {
   inline void init (void)
   {
     HMODULE hinstLib;
-    this->ScriptItemizeOpenType = nullptr;
-    this->ScriptShapeOpenType   = nullptr;
-    this->ScriptPlaceOpenType   = nullptr;
+    this->ScriptItemizeOpenType = NULL;
+    this->ScriptShapeOpenType   = NULL;
+    this->ScriptPlaceOpenType   = NULL;
 
     hinstLib = GetModuleHandle (TEXT ("usp10.dll"));
     if (hinstLib)
@@ -214,7 +217,7 @@ struct hb_uniscribe_shaper_funcs_t {
 	!this->ScriptShapeOpenType   ||
 	!this->ScriptPlaceOpenType)
     {
-      DEBUG_MSG (UNISCRIBE, nullptr, "OpenType versions of functions not found; falling back.");
+      DEBUG_MSG (UNISCRIBE, NULL, "OpenType versions of functions not found; falling back.");
       this->ScriptItemizeOpenType = hb_ScriptItemizeOpenType;
       this->ScriptShapeOpenType   = hb_ScriptShapeOpenType;
       this->ScriptPlaceOpenType   = hb_ScriptPlaceOpenType;
@@ -239,11 +242,11 @@ retry:
   {
     funcs = (hb_uniscribe_shaper_funcs_t *) calloc (1, sizeof (hb_uniscribe_shaper_funcs_t));
     if (unlikely (!funcs))
-      return nullptr;
+      return NULL;
 
     funcs->init ();
 
-    if (!hb_atomic_ptr_cmpexch (&uniscribe_funcs, nullptr, funcs)) {
+    if (!hb_atomic_ptr_cmpexch (&uniscribe_funcs, NULL, funcs)) {
       free (funcs);
       goto retry;
     }
@@ -261,9 +264,7 @@ struct active_feature_t {
   OPENTYPE_FEATURE_RECORD rec;
   unsigned int order;
 
-  static int cmp (const void *pa, const void *pb) {
-    const active_feature_t *a = (const active_feature_t *) pa;
-    const active_feature_t *b = (const active_feature_t *) pb;
+  static int cmp (const active_feature_t *a, const active_feature_t *b) {
     return a->rec.tagFeature < b->rec.tagFeature ? -1 : a->rec.tagFeature > b->rec.tagFeature ? 1 :
 	   a->order < b->order ? -1 : a->order > b->order ? 1 :
 	   a->rec.lParameter < b->rec.lParameter ? -1 : a->rec.lParameter > b->rec.lParameter ? 1 :
@@ -279,9 +280,7 @@ struct feature_event_t {
   bool start;
   active_feature_t feature;
 
-  static int cmp (const void *pa, const void *pb) {
-    const feature_event_t *a = (const feature_event_t *) pa;
-    const feature_event_t *b = (const feature_event_t *) pb;
+  static int cmp (const feature_event_t *a, const feature_event_t *b) {
     return a->index < b->index ? -1 : a->index > b->index ? 1 :
 	   a->start < b->start ? -1 : a->start > b->start ? 1 :
 	   active_feature_t::cmp (&a->feature, &b->feature);
@@ -294,8 +293,8 @@ struct range_record_t {
   unsigned int index_last;  /* == end - 1 */
 };
 
-HB_SHAPER_DATA_ENSURE_DEFINE(uniscribe, face)
-HB_SHAPER_DATA_ENSURE_DEFINE(uniscribe, font)
+HB_SHAPER_DATA_ENSURE_DECLARE(uniscribe, face)
+HB_SHAPER_DATA_ENSURE_DECLARE(uniscribe, font)
 
 
 /*
@@ -317,7 +316,7 @@ _hb_generate_unique_face_name (wchar_t *face_name, unsigned int *plen)
   const char *enc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-";
   UUID id;
   UuidCreate ((UUID*) &id);
-  static_assert ((2 + 3 * (16/2) < LF_FACESIZE), "");
+  ASSERT_STATIC (2 + 3 * (16/2) < LF_FACESIZE);
   unsigned int name_str_len = 0;
   face_name[name_str_len++] = 'F';
   face_name[name_str_len++] = '_';
@@ -351,7 +350,7 @@ _hb_rename_font (hb_blob_t *blob, wchar_t *new_name)
    * full, PS. All of them point to the same name data with our unique name.
    */
 
-  blob = OT::Sanitizer<OT::OpenTypeFontFile>().sanitize (blob);
+  blob = OT::Sanitizer<OT::OpenTypeFontFile>::sanitize (blob);
 
   unsigned int length, new_length, name_str_len;
   const char *orig_sfnt_data = hb_blob_get_data (blob, &length);
@@ -370,7 +369,7 @@ _hb_rename_font (hb_blob_t *blob, wchar_t *new_name)
   if (!new_sfnt_data)
   {
     hb_blob_destroy (blob);
-    return nullptr;
+    return NULL;
   }
 
   memcpy(new_sfnt_data, orig_sfnt_data, length);
@@ -418,7 +417,7 @@ _hb_rename_font (hb_blob_t *blob, wchar_t *new_name)
     {
       free (new_sfnt_data);
       hb_blob_destroy (blob);
-      return nullptr;
+      return NULL;
     }
   }
 
@@ -428,7 +427,7 @@ _hb_rename_font (hb_blob_t *blob, wchar_t *new_name)
 
   hb_blob_destroy (blob);
   return hb_blob_create ((const char *) new_sfnt_data, new_length,
-			 HB_MEMORY_MODE_WRITABLE, nullptr, free);
+			 HB_MEMORY_MODE_WRITABLE, NULL, free);
 }
 
 hb_uniscribe_shaper_face_data_t *
@@ -436,13 +435,13 @@ _hb_uniscribe_shaper_face_data_create (hb_face_t *face)
 {
   hb_uniscribe_shaper_face_data_t *data = (hb_uniscribe_shaper_face_data_t *) calloc (1, sizeof (hb_uniscribe_shaper_face_data_t));
   if (unlikely (!data))
-    return nullptr;
+    return NULL;
 
   data->funcs = hb_uniscribe_shaper_get_funcs ();
   if (unlikely (!data->funcs))
   {
     free (data);
-    return nullptr;
+    return NULL;
   }
 
   hb_blob_t *blob = hb_face_reference_blob (face);
@@ -453,18 +452,18 @@ _hb_uniscribe_shaper_face_data_create (hb_face_t *face)
   if (unlikely (!blob))
   {
     free (data);
-    return nullptr;
+    return NULL;
   }
 
   DWORD num_fonts_installed;
-  data->fh = AddFontMemResourceEx ((void *) hb_blob_get_data (blob, nullptr),
+  data->fh = AddFontMemResourceEx ((void *) hb_blob_get_data (blob, NULL),
 				   hb_blob_get_length (blob),
 				   0, &num_fonts_installed);
   if (unlikely (!data->fh))
   {
     DEBUG_MSG (UNISCRIBE, face, "Face AddFontMemResourceEx() failed");
     free (data);
-    return nullptr;
+    return NULL;
   }
 
   return data;
@@ -496,7 +495,7 @@ populate_log_font (LOGFONTW  *lf,
 		   unsigned int font_size)
 {
   memset (lf, 0, sizeof (*lf));
-  lf->lfHeight = - (int) font_size;
+  lf->lfHeight = -font_size;
   lf->lfCharSet = DEFAULT_CHARSET;
 
   hb_face_t *face = font->face;
@@ -510,11 +509,11 @@ populate_log_font (LOGFONTW  *lf,
 hb_uniscribe_shaper_font_data_t *
 _hb_uniscribe_shaper_font_data_create (hb_font_t *font)
 {
-  if (unlikely (!hb_uniscribe_shaper_face_data_ensure (font->face))) return nullptr;
+  if (unlikely (!hb_uniscribe_shaper_face_data_ensure (font->face))) return NULL;
 
   hb_uniscribe_shaper_font_data_t *data = (hb_uniscribe_shaper_font_data_t *) calloc (1, sizeof (hb_uniscribe_shaper_font_data_t));
   if (unlikely (!data))
-    return nullptr;
+    return NULL;
 
   int font_size = font->face->get_upem (); /* Default... */
   /* No idea if the following is even a good idea. */
@@ -526,25 +525,25 @@ _hb_uniscribe_shaper_font_data_create (hb_font_t *font)
   data->x_mult = (double) font->x_scale / font_size;
   data->y_mult = (double) font->y_scale / font_size;
 
-  data->hdc = GetDC (nullptr);
+  data->hdc = GetDC (NULL);
 
   if (unlikely (!populate_log_font (&data->log_font, font, font_size))) {
     DEBUG_MSG (UNISCRIBE, font, "Font populate_log_font() failed");
     _hb_uniscribe_shaper_font_data_destroy (data);
-    return nullptr;
+    return NULL;
   }
 
   data->hfont = CreateFontIndirectW (&data->log_font);
   if (unlikely (!data->hfont)) {
     DEBUG_MSG (UNISCRIBE, font, "Font CreateFontIndirectW() failed");
     _hb_uniscribe_shaper_font_data_destroy (data);
-     return nullptr;
+     return NULL;
   }
 
   if (!SelectObject (data->hdc, data->hfont)) {
     DEBUG_MSG (UNISCRIBE, font, "Font SelectObject() failed");
     _hb_uniscribe_shaper_font_data_destroy (data);
-     return nullptr;
+     return NULL;
   }
 
   return data;
@@ -554,7 +553,7 @@ void
 _hb_uniscribe_shaper_font_data_destroy (hb_uniscribe_shaper_font_data_t *data)
 {
   if (data->hdc)
-    ReleaseDC (nullptr, data->hdc);
+    ReleaseDC (NULL, data->hdc);
   if (data->hfont)
     DeleteObject (data->hfont);
   if (data->script_cache)
@@ -565,7 +564,7 @@ _hb_uniscribe_shaper_font_data_destroy (hb_uniscribe_shaper_font_data_t *data)
 LOGFONTW *
 hb_uniscribe_font_get_logfontw (hb_font_t *font)
 {
-  if (unlikely (!hb_uniscribe_shaper_font_data_ensure (font))) return nullptr;
+  if (unlikely (!hb_uniscribe_shaper_font_data_ensure (font))) return NULL;
   hb_uniscribe_shaper_font_data_t *font_data =  HB_SHAPER_DATA_GET (font);
   return &font_data->log_font;
 }
@@ -573,7 +572,7 @@ hb_uniscribe_font_get_logfontw (hb_font_t *font)
 HFONT
 hb_uniscribe_font_get_hfont (hb_font_t *font)
 {
-  if (unlikely (!hb_uniscribe_shaper_font_data_ensure (font))) return nullptr;
+  if (unlikely (!hb_uniscribe_shaper_font_data_ensure (font))) return NULL;
   hb_uniscribe_shaper_font_data_t *font_data =  HB_SHAPER_DATA_GET (font);
   return font_data->hfont;
 }
@@ -588,9 +587,7 @@ struct hb_uniscribe_shaper_shape_plan_data_t {};
 hb_uniscribe_shaper_shape_plan_data_t *
 _hb_uniscribe_shaper_shape_plan_data_create (hb_shape_plan_t    *shape_plan HB_UNUSED,
 					     const hb_feature_t *user_features HB_UNUSED,
-					     unsigned int        num_user_features HB_UNUSED,
-					     const int          *coords HB_UNUSED,
-					     unsigned int        num_coords HB_UNUSED)
+					     unsigned int        num_user_features HB_UNUSED)
 {
   return (hb_uniscribe_shaper_shape_plan_data_t *) HB_SHAPER_DATA_SUCCEEDED;
 }
@@ -739,7 +736,7 @@ _hb_uniscribe_shape (hb_shape_plan_t    *shape_plan,
 
 #define FAIL(...) \
   HB_STMT_START { \
-    DEBUG_MSG (UNISCRIBE, nullptr, __VA_ARGS__); \
+    DEBUG_MSG (UNISCRIBE, NULL, __VA_ARGS__); \
     return false; \
   } HB_STMT_END;
 
@@ -855,7 +852,7 @@ retry:
   unsigned int glyphs_offset = 0;
   unsigned int glyphs_len;
   bool backward = HB_DIRECTION_IS_BACKWARD (buffer->props.direction);
-  for (int i = 0; i < item_count; i++)
+  for (unsigned int i = 0; i < item_count; i++)
   {
     unsigned int chars_offset = items[i].iCharPos;
     unsigned int item_chars_len = items[i + 1].iCharPos - chars_offset;
@@ -961,7 +958,7 @@ retry:
 				     /* out */
 				     advances + glyphs_offset,
 				     offsets + glyphs_offset,
-				     nullptr);
+				     NULL);
     if (unlikely (FAILED (hr)))
       FAIL ("ScriptPlaceOpenType() failed: 0x%08xL", hr);
 
@@ -1025,14 +1022,10 @@ retry:
     pos->x_advance = x_mult * (int32_t) info->mask;
     pos->x_offset = x_mult * (backward ? -info->var1.i32 : info->var1.i32);
     pos->y_offset = y_mult * info->var2.i32;
-
-    info->mask = HB_GLYPH_FLAG_UNSAFE_TO_BREAK;
   }
 
   if (backward)
     hb_buffer_reverse (buffer);
-
-  buffer->unsafe_to_break_all ();
 
   /* Wow, done! */
   return true;

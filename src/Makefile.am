@@ -4,16 +4,14 @@ NULL =
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src util test docs
+SUBDIRS = src util test docs win32
 
 EXTRA_DIST = \
 	autogen.sh \
 	harfbuzz.doap \
+	Android.mk \
 	README.python \
 	BUILD.md \
-	RELEASING.md \
-	CMakeLists.txt \
-	replace-enum-strings.cmake \
 	$(NULL)
 
 MAINTAINERCLEANFILES = \

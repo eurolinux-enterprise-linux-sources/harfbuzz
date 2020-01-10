@@ -1,6 +1,5 @@
 # Process this file with automake to produce Makefile.in
 
-NULL =
 SUBDIRS =
 DIST_SUBDIRS =
 BUILT_SOURCES =
@@ -26,13 +25,11 @@ HBLIBS =
 HBNONPCLIBS =
 HBDEPS =
 HBSOURCES =  $(HB_BASE_sources)
-HBSOURCES += $(HB_BASE_RAGEL_GENERATED_sources)
 HBHEADERS = $(HB_BASE_headers)
 HBNODISTHEADERS = $(HB_NODIST_headers)
 
 if HAVE_OT
 HBSOURCES += $(HB_OT_sources)
-HBSOURCES += $(HB_OT_RAGEL_GENERATED_sources)
 HBHEADERS += $(HB_OT_headers)
 endif
 
@@ -100,9 +97,6 @@ SUBDIRS += hb-ucdn
 HBCFLAGS += -I$(srcdir)/hb-ucdn
 HBLIBS   += hb-ucdn/libhb-ucdn.la
 HBSOURCES += $(HB_UCDN_sources)
-hb-ucdn/libhb-ucdn.la: ucdn
-ucdn:
-	@$(MAKE) $(AM_MAKEFLAGS) -C hb-ucdn
 endif
 DIST_SUBDIRS += hb-ucdn
 
@@ -126,7 +120,7 @@ endif
 
 libharfbuzz_la_SOURCES = $(HBSOURCES) $(HBHEADERS) $(HBNODISTHEADERS)
 libharfbuzz_la_CPPFLAGS = $(HBCFLAGS)
-libharfbuzz_la_LDFLAGS = $(AM_LDFLAGS) -lm -version-info $(HB_LIBTOOL_VERSION_INFO) $(export_symbols) -no-undefined
+libharfbuzz_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(HB_LIBTOOL_VERSION_INFO) $(export_symbols) -no-undefined
 libharfbuzz_la_LIBADD = $(HBLIBS)
 EXTRA_libharfbuzz_la_DEPENDENCIES = $(harfbuzz_def_dependency)
 pkginclude_HEADERS = $(HBHEADERS)
@@ -135,16 +129,13 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = harfbuzz.pc
 EXTRA_DIST += harfbuzz.pc.in
 
-FUZZING_CPPFLAGS = \
+FUZZING_CPPFLAGS= \
 	-DHB_NDEBUG \
 	-DHB_MAX_NESTING_LEVEL=3 \
 	-DHB_SANITIZE_MAX_EDITS=3 \
-	-DHB_BUFFER_MAX_LEN_FACTOR=3 \
+	-DHB_BUFFER_MAX_EXPANSION_FACTOR=3 \
 	-DHB_BUFFER_MAX_LEN_MIN=8 \
 	-DHB_BUFFER_MAX_LEN_DEFAULT=128 \
-	-DHB_BUFFER_MAX_OPS_FACTOR=8 \
-	-DHB_BUFFER_MAX_OPS_MIN=64 \
-	-DHB_BUFFER_MAX_OPS_DEFAULT=1024 \
 	$(NULL)
 EXTRA_LTLIBRARIES = libharfbuzz-fuzzing.la
 libharfbuzz_fuzzing_la_LINK = $(libharfbuzz_la_LINK)
@@ -223,14 +214,21 @@ CLEANFILES += $(pkgconfig_DATA)
 
 CLEANFILES += harfbuzz.def
 harfbuzz.def: $(HBHEADERS) $(HBNODISTHEADERS)
-	$(AM_V_GEN) headers="$^" $(srcdir)/gen-def.py $@
+	$(AM_V_GEN) (echo EXPORTS; \
+	(cat $^ || echo 'hb_ERROR ()' ) | \
+	$(EGREP) '^hb_.* \(' | \
+	sed -e 's/ (.*//' | \
+	LANG=C sort; \
+	echo LIBRARY libharfbuzz-0.dll; \
+	) >"$@"
+	@ ! grep -q hb_ERROR "$@" \
+	|| ($(RM) "$@"; false)
 
 
 GENERATORS = \
 	gen-arabic-table.py \
 	gen-indic-table.py \
 	gen-use-table.py \
-	gen-def.py \
 	$(NULL)
 EXTRA_DIST += $(GENERATORS)
 
@@ -253,13 +251,19 @@ built-sources: $(BUILT_SOURCES)
 .PHONY: unicode-tables arabic-table indic-table use-table built-sources
 
 RAGEL_GENERATED = \
-	$(patsubst %,$(srcdir)/%,$(HB_BASE_RAGEL_GENERATED_sources)) \
-	$(patsubst %,$(srcdir)/%,$(HB_OT_RAGEL_GENERATED_sources)) \
+	$(srcdir)/hb-buffer-deserialize-json.hh \
+	$(srcdir)/hb-buffer-deserialize-text.hh \
+	$(srcdir)/hb-ot-shape-complex-indic-machine.hh \
+	$(srcdir)/hb-ot-shape-complex-myanmar-machine.hh \
+	$(srcdir)/hb-ot-shape-complex-use-machine.hh \
 	$(NULL)
 BUILT_SOURCES += $(RAGEL_GENERATED)
 EXTRA_DIST += \
-	$(HB_BASE_RAGEL_sources) \
-	$(HB_OT_RAGEL_sources) \
+	hb-buffer-deserialize-json.rl \
+	hb-buffer-deserialize-text.rl \
+	hb-ot-shape-complex-indic-machine.rl \
+	hb-ot-shape-complex-myanmar-machine.rl \
+	hb-ot-shape-complex-use-machine.rl \
 	$(NULL)
 MAINTAINERCLEANFILES += $(RAGEL_GENERATED)
 $(srcdir)/%.hh: $(srcdir)/%.rl
@@ -295,12 +299,9 @@ test_buffer_serialize_SOURCES = test-buffer-serialize.cc
 test_buffer_serialize_CPPFLAGS = $(HBCFLAGS)
 test_buffer_serialize_LDADD = libharfbuzz.la $(HBLIBS)
 
-check: harfbuzz.def # For check-defs.sh
-
 dist_check_SCRIPTS = \
 	check-c-linkage-decls.sh \
 	check-defs.sh \
-	check-externs.sh \
 	check-header-guards.sh \
 	check-includes.sh \
 	check-libstdc++.sh \

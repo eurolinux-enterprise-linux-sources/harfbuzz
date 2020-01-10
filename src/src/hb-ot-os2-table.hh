@@ -50,50 +50,50 @@ struct os2
   }
 
   public:
-  HBUINT16	version;
+  USHORT	version;
 
   /* Version 0 */
-  HBINT16		xAvgCharWidth;
-  HBUINT16	usWeightClass;
-  HBUINT16	usWidthClass;
-  HBUINT16	fsType;
-  HBINT16		ySubscriptXSize;
-  HBINT16		ySubscriptYSize;
-  HBINT16		ySubscriptXOffset;
-  HBINT16		ySubscriptYOffset;
-  HBINT16		ySuperscriptXSize;
-  HBINT16		ySuperscriptYSize;
-  HBINT16		ySuperscriptXOffset;
-  HBINT16		ySuperscriptYOffset;
-  HBINT16		yStrikeoutSize;
-  HBINT16		yStrikeoutPosition;
-  HBINT16		sFamilyClass;
-  HBUINT8		panose[10];
-  HBUINT32		ulUnicodeRange[4];
+  SHORT		xAvgCharWidth;
+  USHORT	usWeightClass;
+  USHORT	usWidthClass;
+  USHORT	fsType;
+  SHORT		ySubscriptXSize;
+  SHORT		ySubscriptYSize;
+  SHORT		ySubscriptXOffset;
+  SHORT		ySubscriptYOffset;
+  SHORT		ySuperscriptXSize;
+  SHORT		ySuperscriptYSize;
+  SHORT		ySuperscriptXOffset;
+  SHORT		ySuperscriptYOffset;
+  SHORT		yStrikeoutSize;
+  SHORT		yStrikeoutPosition;
+  SHORT		sFamilyClass;
+  BYTE		panose[10];
+  ULONG		ulUnicodeRange[4];
   Tag		achVendID;
-  HBUINT16	fsSelection;
-  HBUINT16	usFirstCharIndex;
-  HBUINT16	usLastCharIndex;
-  HBINT16		sTypoAscender;
-  HBINT16		sTypoDescender;
-  HBINT16		sTypoLineGap;
-  HBUINT16	usWinAscent;
-  HBUINT16	usWinDescent;
+  USHORT	fsSelection;
+  USHORT	usFirstCharIndex;
+  USHORT	usLastCharIndex;
+  SHORT		sTypoAscender;
+  SHORT		sTypoDescender;
+  SHORT		sTypoLineGap;
+  USHORT	usWinAscent;
+  USHORT	usWinDescent;
 
   /* Version 1 */
-  //HBUINT32 ulCodePageRange1;
-  //HBUINT32 ulCodePageRange2;
+  //ULONG ulCodePageRange1;
+  //ULONG ulCodePageRange2;
 
   /* Version 2 */
-  //HBINT16 sxHeight;
-  //HBINT16 sCapHeight;
-  //HBUINT16  usDefaultChar;
-  //HBUINT16  usBreakChar;
-  //HBUINT16  usMaxContext;
+  //SHORT sxHeight;
+  //SHORT sCapHeight;
+  //USHORT  usDefaultChar;
+  //USHORT  usBreakChar;
+  //USHORT  usMaxContext;
 
   /* Version 5 */
-  //HBUINT16  usLowerOpticalPointSize;
-  //HBUINT16  usUpperOpticalPointSize;
+  //USHORT  usLowerOpticalPointSize;
+  //USHORT  usUpperOpticalPointSize;
 
   public:
   DEFINE_SIZE_STATIC (78);
