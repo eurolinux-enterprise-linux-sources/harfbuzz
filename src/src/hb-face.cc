@@ -31,9 +31,12 @@
 #include "hb-ot-layout-private.hh"
 
 #include "hb-font-private.hh"
+#include "hb-blob.h"
 #include "hb-open-file-private.hh"
 #include "hb-ot-head-table.hh"
 #include "hb-ot-maxp-table.hh"
+
+#include "hb-cache-private.hh"
 
 #include <string.h>
 
@@ -65,18 +68,6 @@ const hb_face_t _hb_face_nil = {
 };
 
 
-/**
- * hb_face_create_for_tables:
- * @reference_table_func: (closure user_data) (destroy destroy) (scope notified):
- * @user_data: 
- * @destroy: 
- *
- * 
- *
- * Return value: (transfer full)
- *
- * Since: 0.9.2
- **/
 hb_face_t *
 hb_face_create_for_tables (hb_reference_table_func_t  reference_table_func,
 			   void                      *user_data,
@@ -111,7 +102,7 @@ _hb_face_for_data_closure_create (hb_blob_t *blob, unsigned int index)
 {
   hb_face_for_data_closure_t *closure;
 
-  closure = (hb_face_for_data_closure_t *) calloc (1, sizeof (hb_face_for_data_closure_t));
+  closure = (hb_face_for_data_closure_t *) malloc (sizeof (hb_face_for_data_closure_t));
   if (unlikely (!closure))
     return NULL;
 
@@ -146,25 +137,14 @@ _hb_face_for_data_reference_table (hb_face_t *face HB_UNUSED, hb_tag_t tag, void
   return blob;
 }
 
-/**
- * hb_face_create: (Xconstructor)
- * @blob: 
- * @index: 
- *
- * 
- *
- * Return value: (transfer full):
- *
- * Since: 0.9.2
- **/
 hb_face_t *
 hb_face_create (hb_blob_t    *blob,
 		unsigned int  index)
 {
   hb_face_t *face;
 
-  if (unlikely (!blob))
-    blob = hb_blob_get_empty ();
+  if (unlikely (!blob || !hb_blob_get_length (blob)))
+    return hb_face_get_empty ();
 
   hb_face_for_data_closure_t *closure = _hb_face_for_data_closure_create (OT::Sanitizer<OT::OpenTypeFontFile>::sanitize (hb_blob_reference (blob)), index);
 
@@ -180,15 +160,6 @@ hb_face_create (hb_blob_t    *blob,
   return face;
 }
 
-/**
- * hb_face_get_empty:
- *
- * 
- *
- * Return value: (transfer full)
- *
- * Since: 0.9.2
- **/
 hb_face_t *
 hb_face_get_empty (void)
 {
@@ -196,30 +167,12 @@ hb_face_get_empty (void)
 }
 
 
-/**
- * hb_face_reference: (skip)
- * @face: a face.
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.2
- **/
 hb_face_t *
 hb_face_reference (hb_face_t *face)
 {
   return hb_object_reference (face);
 }
 
-/**
- * hb_face_destroy: (skip)
- * @face: a face.
- *
- * 
- *
- * Since: 0.9.2
- **/
 void
 hb_face_destroy (hb_face_t *face)
 {
@@ -243,20 +196,6 @@ hb_face_destroy (hb_face_t *face)
   free (face);
 }
 
-/**
- * hb_face_set_user_data: (skip)
- * @face: a face.
- * @key: 
- * @data: 
- * @destroy: 
- * @replace: 
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.2
- **/
 hb_bool_t
 hb_face_set_user_data (hb_face_t          *face,
 		       hb_user_data_key_t *key,
@@ -267,17 +206,6 @@ hb_face_set_user_data (hb_face_t          *face,
   return hb_object_set_user_data (face, key, data, destroy, replace);
 }
 
-/**
- * hb_face_get_user_data: (skip)
- * @face: a face.
- * @key: 
- *
- * 
- *
- * Return value: (transfer none):
- *
- * Since: 0.9.2
- **/
 void *
 hb_face_get_user_data (hb_face_t          *face,
 		       hb_user_data_key_t *key)
@@ -285,33 +213,15 @@ hb_face_get_user_data (hb_face_t          *face,
   return hb_object_get_user_data (face, key);
 }
 
-/**
- * hb_face_make_immutable:
- * @face: a face.
- *
- * 
- *
- * Since: 0.9.2
- **/
 void
 hb_face_make_immutable (hb_face_t *face)
 {
-  if (unlikely (hb_object_is_inert (face)))
+  if (hb_object_is_inert (face))
     return;
 
   face->immutable = true;
 }
 
-/**
- * hb_face_is_immutable:
- * @face: a face.
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.2
- **/
 hb_bool_t
 hb_face_is_immutable (hb_face_t *face)
 {
@@ -319,17 +229,6 @@ hb_face_is_immutable (hb_face_t *face)
 }
 
 
-/**
- * hb_face_reference_table:
- * @face: a face.
- * @tag: 
- *
- * 
- *
- * Return value: (transfer full):
- *
- * Since: 0.9.2
- **/
 hb_blob_t *
 hb_face_reference_table (hb_face_t *face,
 			 hb_tag_t   tag)
@@ -337,86 +236,38 @@ hb_face_reference_table (hb_face_t *face,
   return face->reference_table (tag);
 }
 
-/**
- * hb_face_reference_blob:
- * @face: a face.
- *
- * 
- *
- * Return value: (transfer full):
- *
- * Since: 0.9.2
- **/
 hb_blob_t *
 hb_face_reference_blob (hb_face_t *face)
 {
   return face->reference_table (HB_TAG_NONE);
 }
 
-/**
- * hb_face_set_index:
- * @face: a face.
- * @index: 
- *
- * 
- *
- * Since: 0.9.2
- **/
 void
 hb_face_set_index (hb_face_t    *face,
 		   unsigned int  index)
 {
-  if (face->immutable)
+  if (hb_object_is_inert (face))
     return;
 
   face->index = index;
 }
 
-/**
- * hb_face_get_index:
- * @face: a face.
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.2
- **/
 unsigned int
 hb_face_get_index (hb_face_t    *face)
 {
   return face->index;
 }
 
-/**
- * hb_face_set_upem:
- * @face: a face.
- * @upem: 
- *
- * 
- *
- * Since: 0.9.2
- **/
 void
 hb_face_set_upem (hb_face_t    *face,
 		  unsigned int  upem)
 {
-  if (face->immutable)
+  if (hb_object_is_inert (face))
     return;
 
   face->upem = upem;
 }
 
-/**
- * hb_face_get_upem:
- * @face: a face.
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.2
- **/
 unsigned int
 hb_face_get_upem (hb_face_t *face)
 {
@@ -432,35 +283,16 @@ hb_face_t::load_upem (void) const
   hb_blob_destroy (head_blob);
 }
 
-/**
- * hb_face_set_glyph_count:
- * @face: a face.
- * @glyph_count: 
- *
- * 
- *
- * Since: 0.9.7
- **/
 void
 hb_face_set_glyph_count (hb_face_t    *face,
 			 unsigned int  glyph_count)
 {
-  if (face->immutable)
+  if (hb_object_is_inert (face))
     return;
 
   face->num_glyphs = glyph_count;
 }
 
-/**
- * hb_face_get_glyph_count:
- * @face: a face.
- *
- * 
- *
- * Return value: 
- *
- * Since: 0.9.7
- **/
 unsigned int
 hb_face_get_glyph_count (hb_face_t *face)
 {

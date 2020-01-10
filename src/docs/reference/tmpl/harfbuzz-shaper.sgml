@@ -1,0 +1,218 @@
+<!-- ##### SECTION Title ##### -->
+HB_Font
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT HB_FaceRec ##### -->
+<para>
+
+</para>
+
+@isSymbolFont: 
+@gdef: 
+@gsub: 
+@gpos: 
+@supported_scripts: 
+@buffer: 
+@current_script: 
+@current_flags: 
+@has_opentype_kerning: 
+@glyphs_substituted: 
+@tmpAttributes: 
+@tmpLogClusters: 
+@length: 
+@orig_nglyphs: 
+
+<!-- ##### STRUCT HB_FontClass ##### -->
+<para>
+
+</para>
+
+@convertStringToGlyphIndices: 
+@getGlyphAdvances: 
+@canRender: 
+@getPointInOutline: 
+@getGlyphMetrics: 
+@getFontMetric: 
+
+<!-- ##### ENUM HB_FontMetric ##### -->
+<para>
+
+</para>
+
+@HB_FontAscent: 
+
+<!-- ##### STRUCT HB_FontRec ##### -->
+<para>
+
+</para>
+
+@klass: 
+@x_ppem: 
+@y_ppem: 
+@x_scale: 
+@y_scale: 
+@userData: 
+
+<!-- ##### FUNCTION HB_FreeFace ##### -->
+<para>
+
+</para>
+
+@face: 
+
+
+<!-- ##### USER_FUNCTION HB_GetFontTableFunc ##### -->
+<para>
+
+</para>
+
+@font: 
+@tag: 
+@buffer: 
+@length: 
+@Returns: 
+
+
+<!-- ##### STRUCT HB_GlyphAttributes ##### -->
+<para>
+
+</para>
+
+@justification: 
+@clusterStart: 
+@mark: 
+@zeroWidth: 
+@dontPrint: 
+@combiningClass: 
+
+<!-- ##### STRUCT HB_GlyphMetrics ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+@width: 
+@height: 
+@xOffset: 
+@yOffset: 
+
+<!-- ##### ENUM HB_JustificationClass ##### -->
+<para>
+
+</para>
+
+@HB_NoJustification: 
+@HB_Arabic_Space: 
+@HB_Character: 
+@HB_Space: 
+@HB_Arabic_Normal: 
+@HB_Arabic_Waw: 
+@HB_Arabic_BaRa: 
+@HB_Arabic_Alef: 
+@HB_Arabic_HaaDal: 
+@HB_Arabic_Seen: 
+@HB_Arabic_Kashida: 
+
+<!-- ##### FUNCTION HB_NewFace ##### -->
+<para>
+
+</para>
+
+@font: 
+@tableFunc: 
+@Returns: 
+
+
+<!-- ##### ENUM HB_Script ##### -->
+<para>
+
+</para>
+
+@HB_Script_Common: 
+@HB_Script_Greek: 
+@HB_Script_Cyrillic: 
+@HB_Script_Armenian: 
+@HB_Script_Hebrew: 
+@HB_Script_Arabic: 
+@HB_Script_Syriac: 
+@HB_Script_Thaana: 
+@HB_Script_Devanagari: 
+@HB_Script_Bengali: 
+@HB_Script_Gurmukhi: 
+@HB_Script_Gujarati: 
+@HB_Script_Oriya: 
+@HB_Script_Tamil: 
+@HB_Script_Telugu: 
+@HB_Script_Kannada: 
+@HB_Script_Malayalam: 
+@HB_Script_Sinhala: 
+@HB_Script_Thai: 
+@HB_Script_Lao: 
+@HB_Script_Tibetan: 
+@HB_Script_Myanmar: 
+@HB_Script_Georgian: 
+@HB_Script_Hangul: 
+@HB_Script_Ogham: 
+@HB_Script_Runic: 
+@HB_Script_Khmer: 
+@HB_Script_Nko: 
+@HB_Script_Inherited: 
+@HB_ScriptCount: 
+
+<!-- ##### FUNCTION HB_ShapeItem ##### -->
+<para>
+
+</para>
+
+@item: 
+@Returns: 
+
+
+<!-- ##### ENUM HB_ShaperFlag ##### -->
+<para>
+
+</para>
+
+@HB_ShaperFlag_Default: 
+@HB_ShaperFlag_NoKerning: 
+@HB_ShaperFlag_UseDesignMetrics: 
+
+<!-- ##### TYPEDEF HB_ShaperItem ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM HB_StringToGlyphsFlags ##### -->
+<para>
+
+</para>
+
+@HB_LeftToRight: 
+@HB_RightToLeft: 
+
+<!-- ##### TYPEDEF hb_bitfield ##### -->
+<para>
+
+</para>
+
+

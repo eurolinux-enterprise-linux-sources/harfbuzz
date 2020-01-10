@@ -33,18 +33,15 @@
 
 
 cairo_scaled_font_t *
-helper_cairo_create_scaled_font (const font_options_t *font_opts);
+helper_cairo_create_scaled_font (const font_options_t *font_opts,
+				 double font_size);
 
-bool
-helper_cairo_scaled_font_has_color (cairo_scaled_font_t *scaled_font);
-
-extern const char *helper_cairo_supported_formats[];
+extern const char helper_cairo_supported_formats[];
 
 cairo_t *
 helper_cairo_create_context (double w, double h,
 			     view_options_t *view_opts,
-			     output_options_t *out_opts,
-			     cairo_content_t content);
+			     output_options_t *out_opts);
 
 void
 helper_cairo_destroy_context (cairo_t *cr);
@@ -79,7 +76,7 @@ helper_cairo_line_from_buffer (helper_cairo_line_t *l,
 			       hb_buffer_t         *buffer,
 			       const char          *text,
 			       unsigned int         text_len,
-			       int                  scale_bits,
+			       double               scale,
 			       hb_bool_t            utf8_clusters);
 
 #endif

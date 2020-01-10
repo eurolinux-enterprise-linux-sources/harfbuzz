@@ -1,0 +1,138 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-gdef
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### TYPEDEF HB_AttachList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AttachPoint ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_Done_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF HB_GDEF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GDEFHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GDEF_BASE_GLYPH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION HB_GDEF_Build_ClassDefinition ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@num_glyphs: 
+@glyph_count: 
+@glyph_array: 
+@class_array: 
+@Returns: 
+
+
+<!-- ##### MACRO HB_GDEF_COMPONENT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION HB_GDEF_Get_Glyph_Property ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@glyphID: 
+@property: 
+@Returns: 
+
+
+<!-- ##### MACRO HB_GDEF_LIGATURE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GDEF_MARK ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF HB_LigCaretList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigGlyph ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_Load_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@stream: 
+@gdef: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_New_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@retptr: 
+@Returns: 
+
+

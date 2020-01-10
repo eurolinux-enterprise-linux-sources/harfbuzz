@@ -1,0 +1,188 @@
+<!-- ##### SECTION Title ##### -->
+hb-face
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION hb_face_create ##### -->
+<para>
+
+</para>
+
+@blob: 
+@index: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_create_for_tables ##### -->
+<para>
+
+</para>
+
+@reference_table_func: 
+@user_data: 
+@destroy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_destroy ##### -->
+<para>
+
+</para>
+
+@face: 
+
+
+<!-- ##### FUNCTION hb_face_get_empty ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_get_glyph_count ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_get_index ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_get_upem ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_get_user_data ##### -->
+<para>
+
+</para>
+
+@face: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_is_immutable ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_make_immutable ##### -->
+<para>
+
+</para>
+
+@face: 
+
+
+<!-- ##### FUNCTION hb_face_reference ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_reference_blob ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_reference_table ##### -->
+<para>
+
+</para>
+
+@face: 
+@tag: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_face_set_glyph_count ##### -->
+<para>
+
+</para>
+
+@face: 
+@glyph_count: 
+
+
+<!-- ##### FUNCTION hb_face_set_index ##### -->
+<para>
+
+</para>
+
+@face: 
+@index: 
+
+
+<!-- ##### FUNCTION hb_face_set_upem ##### -->
+<para>
+
+</para>
+
+@face: 
+@upem: 
+
+
+<!-- ##### FUNCTION hb_face_set_user_data ##### -->
+<para>
+
+</para>
+
+@face: 
+@key: 
+@data: 
+@destroy: 
+@replace: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_face_t ##### -->
+<para>
+
+</para>
+
+

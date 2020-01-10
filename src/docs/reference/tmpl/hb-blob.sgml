@@ -1,0 +1,157 @@
+<!-- ##### SECTION Title ##### -->
+hb-blob
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION hb_blob_create ##### -->
+<para>
+
+</para>
+
+@data: 
+@length: 
+@mode: 
+@user_data: 
+@destroy: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_create_sub_blob ##### -->
+<para>
+
+</para>
+
+@parent: 
+@offset: 
+@length: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_destroy ##### -->
+<para>
+
+</para>
+
+@blob: 
+
+
+<!-- ##### FUNCTION hb_blob_get_data ##### -->
+<para>
+
+</para>
+
+@blob: 
+@length: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_get_data_writable ##### -->
+<para>
+
+</para>
+
+@blob: 
+@length: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_get_empty ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_get_length ##### -->
+<para>
+
+</para>
+
+@blob: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_get_user_data ##### -->
+<para>
+
+</para>
+
+@blob: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_is_immutable ##### -->
+<para>
+
+</para>
+
+@blob: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_make_immutable ##### -->
+<para>
+
+</para>
+
+@blob: 
+
+
+<!-- ##### FUNCTION hb_blob_reference ##### -->
+<para>
+
+</para>
+
+@blob: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_blob_set_user_data ##### -->
+<para>
+
+</para>
+
+@blob: 
+@key: 
+@data: 
+@destroy: 
+@replace: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_blob_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM hb_memory_mode_t ##### -->
+<para>
+
+</para>
+
+@HB_MEMORY_MODE_DUPLICATE: 
+@HB_MEMORY_MODE_READONLY: 
+@HB_MEMORY_MODE_WRITABLE: 
+@HB_MEMORY_MODE_READONLY_MAY_MAKE_WRITABLE: 
+

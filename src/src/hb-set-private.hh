@@ -28,6 +28,7 @@
 #define HB_SET_PRIVATE_HH
 
 #include "hb-private.hh"
+#include "hb-set.h"
 #include "hb-object-private.hh"
 
 
@@ -36,15 +37,7 @@
  * "approximate member query".  Conceptually these are like Bloom
  * Filter and Quotient Filter, however, much smaller, faster, and
  * designed to fit the requirements of our uses for glyph coverage
- * queries.
- *
- * Our filters are highly accurate if the lookup covers fairly local
- * set of glyphs, but fully flooded and ineffective if coverage is
- * all over the place.
- *
- * The frozen-set can be used instead of a digest, to trade more
- * memory for 100% accuracy, but in practice, that doesn't look like
- * an attractive trade-off.
+ * queries.  As a result, our filters have much higher.
  */
 
 template <typename mask_t, unsigned int shift>
@@ -153,14 +146,12 @@ typedef hb_set_digest_combiner_t
 
 struct hb_set_t
 {
-  friend struct hb_frozen_set_t;
-
   hb_object_header_t header;
   ASSERT_POD ();
   bool in_error;
 
   inline void init (void) {
-    hb_object_init (this);
+    header.init ();
     clear ();
   }
   inline void fini (void) {
@@ -180,7 +171,7 @@ struct hb_set_t
   inline void add (hb_codepoint_t g)
   {
     if (unlikely (in_error)) return;
-    if (unlikely (g == INVALID)) return;
+    if (unlikely (g == SENTINEL)) return;
     if (unlikely (g > MAX_G)) return;
     elt (g) |= mask (g);
   }
@@ -265,22 +256,19 @@ struct hb_set_t
   }
   inline bool next (hb_codepoint_t *codepoint) const
   {
-    if (unlikely (*codepoint == INVALID)) {
+    if (unlikely (*codepoint == SENTINEL)) {
       hb_codepoint_t i = get_min ();
-      if (i != INVALID) {
+      if (i != SENTINEL) {
         *codepoint = i;
 	return true;
-      } else {
-	*codepoint = INVALID;
+      } else
         return false;
-      }
     }
     for (hb_codepoint_t i = *codepoint + 1; i < MAX_G + 1; i++)
       if (has (i)) {
         *codepoint = i;
 	return true;
       }
-    *codepoint = INVALID;
     return false;
   }
   inline bool next_range (hb_codepoint_t *first, hb_codepoint_t *last) const
@@ -289,10 +277,7 @@ struct hb_set_t
 
     i = *last;
     if (!next (&i))
-    {
-      *last = *first = INVALID;
       return false;
-    }
 
     *last = *first = i;
     while (next (&i) && i == *last + 1)
@@ -313,18 +298,18 @@ struct hb_set_t
     for (unsigned int i = 0; i < ELTS; i++)
       if (elts[i])
 	for (unsigned int j = 0; j < BITS; j++)
-	  if (elts[i] & (1u << j))
+	  if (elts[i] & (1 << j))
 	    return i * BITS + j;
-    return INVALID;
+    return SENTINEL;
   }
   inline hb_codepoint_t get_max (void) const
   {
     for (unsigned int i = ELTS; i; i--)
       if (elts[i - 1])
 	for (unsigned int j = BITS; j; j--)
-	  if (elts[i - 1] & (1u << (j - 1)))
+	  if (elts[i - 1] & (1 << (j - 1)))
 	    return (i - 1) * BITS + (j - 1);
-    return INVALID;
+    return SENTINEL;
   }
 
   typedef uint32_t elt_t;
@@ -333,10 +318,10 @@ struct hb_set_t
   static const unsigned int BITS = (1 << SHIFT);
   static const unsigned int MASK = BITS - 1;
   static const unsigned int ELTS = (MAX_G + 1 + (BITS - 1)) / BITS;
-  static  const hb_codepoint_t INVALID = HB_SET_VALUE_INVALID;
+  static  const hb_codepoint_t SENTINEL = (hb_codepoint_t) -1;
 
   elt_t &elt (hb_codepoint_t g) { return elts[g >> SHIFT]; }
-  elt_t const &elt (hb_codepoint_t g) const { return elts[g >> SHIFT]; }
+  elt_t elt (hb_codepoint_t g) const { return elts[g >> SHIFT]; }
   elt_t mask (hb_codepoint_t g) const { return elt_t (1) << (g & MASK); }
 
   elt_t elts[ELTS]; /* XXX 8kb */
@@ -345,58 +330,6 @@ struct hb_set_t
   ASSERT_STATIC (sizeof (elt_t) * 8 * ELTS > MAX_G);
 };
 
-struct hb_frozen_set_t
-{
-  static const unsigned int SHIFT = hb_set_t::SHIFT;
-  static const unsigned int BITS = hb_set_t::BITS;
-  static const unsigned int MASK = hb_set_t::MASK;
-  typedef hb_set_t::elt_t elt_t;
-
-  inline void init (const hb_set_t &set)
-  {
-    start = count = 0;
-    elts = NULL;
-
-    unsigned int max = set.get_max ();
-    if (max == set.INVALID)
-      return;
-    unsigned int min = set.get_min ();
-    const elt_t &min_elt = set.elt (min);
-
-    start = min & ~MASK;
-    count = max - start + 1;
-    unsigned int num_elts = (count + BITS - 1) / BITS;
-    unsigned int elts_size = num_elts * sizeof (elt_t);
-    elts = (elt_t *) malloc (elts_size);
-    if (unlikely (!elts))
-    {
-      start = count = 0;
-      return;
-    }
-    memcpy (elts, &min_elt, elts_size);
-  }
-
-  inline void fini (void)
-  {
-    if (elts)
-      free (elts);
-  }
-
-  inline bool has (hb_codepoint_t g) const
-  {
-    /* hb_codepoint_t is unsigned. */
-    g -= start;
-    if (unlikely (g > count)) return false;
-    return !!(elt (g) & mask (g));
-  }
-
-  elt_t const &elt (hb_codepoint_t g) const { return elts[g >> SHIFT]; }
-  elt_t mask (hb_codepoint_t g) const { return elt_t (1) << (g & MASK); }
-
-  private:
-  hb_codepoint_t start, count;
-  elt_t *elts;
-};
 
 
 #endif /* HB_SET_PRIVATE_HH */

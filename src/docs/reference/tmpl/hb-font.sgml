@@ -1,0 +1,783 @@
+<!-- ##### SECTION Title ##### -->
+hb-font
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION hb_font_add_glyph_origin_for_direction ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@direction: 
+@x: 
+@y: 
+
+
+<!-- ##### FUNCTION hb_font_create ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_create_sub_font ##### -->
+<para>
+
+</para>
+
+@parent: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_destroy ##### -->
+<para>
+
+</para>
+
+@font: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_create ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_destroy ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_get_empty ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_get_user_data ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_is_immutable ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_make_immutable ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_reference ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_contour_point_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_extents_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_from_name_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@glyph_func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@glyph_func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_h_advance_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_h_kerning_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_h_origin_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_name_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@glyph_func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_v_advance_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_v_kerning_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_glyph_v_origin_func ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@func: 
+@user_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_funcs_set_user_data ##### -->
+<para>
+
+</para>
+
+@ffuncs: 
+@key: 
+@data: 
+@destroy: 
+@replace: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_funcs_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_empty ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_face ##### -->
+<para>
+
+</para>
+
+@font: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph ##### -->
+<para>
+
+</para>
+
+@font: 
+@unicode: 
+@variation_selector: 
+@glyph: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_advance_for_direction ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@direction: 
+@x: 
+@y: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_advance_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@glyph: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_contour_point ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@point_index: 
+@x: 
+@y: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_contour_point_for_origin ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@point_index: 
+@direction: 
+@x: 
+@y: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_contour_point_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@glyph: 
+@point_index: 
+@x: 
+@y: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_extents ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@extents: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_extents_for_origin ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@direction: 
+@extents: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_extents_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@glyph: 
+@extents: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_from_name ##### -->
+<para>
+
+</para>
+
+@font: 
+@name: 
+@len: 
+@glyph: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_from_name_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@name: 
+@len: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@unicode: 
+@variation_selector: 
+@glyph: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_h_advance ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_h_advance_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_h_kerning ##### -->
+<para>
+
+</para>
+
+@font: 
+@left_glyph: 
+@right_glyph: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_h_kerning_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_h_origin ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@x: 
+@y: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_h_origin_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_kerning_for_direction ##### -->
+<para>
+
+</para>
+
+@font: 
+@first_glyph: 
+@second_glyph: 
+@direction: 
+@x: 
+@y: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_kerning_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@first_glyph: 
+@second_glyph: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_name ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@name: 
+@size: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_name_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@glyph: 
+@name: 
+@size: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_origin_for_direction ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@direction: 
+@x: 
+@y: 
+
+
+<!-- ##### USER_FUNCTION hb_font_get_glyph_origin_func_t ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@glyph: 
+@x: 
+@y: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_v_advance ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_v_advance_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_v_kerning ##### -->
+<para>
+
+</para>
+
+@font: 
+@top_glyph: 
+@bottom_glyph: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_v_kerning_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_glyph_v_origin ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@x: 
+@y: 
+@Returns: 
+
+
+<!-- ##### TYPEDEF hb_font_get_glyph_v_origin_func_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION hb_font_get_parent ##### -->
+<para>
+
+</para>
+
+@font: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_get_ppem ##### -->
+<para>
+
+</para>
+
+@font: 
+@x_ppem: 
+@y_ppem: 
+
+
+<!-- ##### FUNCTION hb_font_get_scale ##### -->
+<para>
+
+</para>
+
+@font: 
+@x_scale: 
+@y_scale: 
+
+
+<!-- ##### FUNCTION hb_font_get_user_data ##### -->
+<para>
+
+</para>
+
+@font: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_glyph_from_string ##### -->
+<para>
+
+</para>
+
+@font: 
+@s: 
+@len: 
+@glyph: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_glyph_to_string ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@s: 
+@size: 
+
+
+<!-- ##### FUNCTION hb_font_is_immutable ##### -->
+<para>
+
+</para>
+
+@font: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_make_immutable ##### -->
+<para>
+
+</para>
+
+@font: 
+
+
+<!-- ##### FUNCTION hb_font_reference ##### -->
+<para>
+
+</para>
+
+@font: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_set_funcs ##### -->
+<para>
+
+</para>
+
+@font: 
+@klass: 
+@font_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_set_funcs_data ##### -->
+<para>
+
+</para>
+
+@font: 
+@font_data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION hb_font_set_ppem ##### -->
+<para>
+
+</para>
+
+@font: 
+@x_ppem: 
+@y_ppem: 
+
+
+<!-- ##### FUNCTION hb_font_set_scale ##### -->
+<para>
+
+</para>
+
+@font: 
+@x_scale: 
+@y_scale: 
+
+
+<!-- ##### FUNCTION hb_font_set_user_data ##### -->
+<para>
+
+</para>
+
+@font: 
+@key: 
+@data: 
+@destroy: 
+@replace: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_font_subtract_glyph_origin_for_direction ##### -->
+<para>
+
+</para>
+
+@font: 
+@glyph: 
+@direction: 
+@x: 
+@y: 
+
+
+<!-- ##### TYPEDEF hb_font_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION hb_reference_table_func_t ##### -->
+<para>
+
+</para>
+
+@face: 
+@tag: 
+@user_data: 
+@Returns: 
+
+

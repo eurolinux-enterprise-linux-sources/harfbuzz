@@ -1,0 +1,202 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-gsub-private
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### TYPEDEF HB_AlternateSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AlternateSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ExtensionSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GSUB_SubTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Ligature ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MultipleSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ReverseChainContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Sequence ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubstLookupRecord ##### -->
+<para>
+
+</para>
+
+

@@ -1,0 +1,173 @@
+<!-- ##### SECTION Title ##### -->
+sfnt
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO ANY_NUMBER ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF BigDate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPEncodingSubtable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPEncodingSubtable32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPEncodingSubtableHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat0Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat10Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat12Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat2Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat2Subheader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat4Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat6Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat8Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPGroup ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF DirectoryEntry ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HEADTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HHEATable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HMTXTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF LongHorMetric ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF MAXPTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF NAMETable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF NameRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF SFNTDirectory ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF fixed ##### -->
+<para>
+
+</para>
+
+

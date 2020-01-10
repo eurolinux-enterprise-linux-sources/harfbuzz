@@ -1,6 +1,6 @@
 Name:           harfbuzz
-Version:        1.3.2
-Release:        1%{?dist}
+Version:        0.9.20
+Release:        3%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
@@ -61,8 +61,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 
 %files
-%license COPYING
-%doc NEWS AUTHORS README
+%doc NEWS AUTHORS COPYING README
 %{_libdir}/libharfbuzz.so.*
 
 %files devel
@@ -80,17 +79,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
-* Mon Oct 17 2016 Kalev Lember <klember@redhat.com> - 1.3.2-1
-- Update to 1.3.2
-- Resolves: #1386994
-
-* Tue Apr 28 2015 Parag Nemade <pnemade AT redhat DOT com> - 0.9.36-1
-- Update to 0.9.36 upstream release
-- Resolves: #1201148
-
-* Mon Aug 18 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.9.20-4
-- Resolves:rh#998812 - gedit segfaults when loading a certain file
-
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.9.20-3
 - Mass rebuild 2014-01-24
 

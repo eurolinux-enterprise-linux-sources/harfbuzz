@@ -1,0 +1,449 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-gpos-private
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO AF3_X_DEVICE_TABLE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO AF3_Y_DEVICE_TABLE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF HB_Anchor ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat4 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_BaseArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_BaseRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Class1Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Class2Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ComponentRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CursivePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_EntryExitRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ExtensionPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_DEVICE_TABLES ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ID_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ID_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ID_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ID_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF HB_GPOS_SubTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureAttach ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Mark2Array ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Mark2Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkBasePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkLigPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkMarkPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairValueRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosLookupRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ValueRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO VR_X_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO VR_X_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO VR_Y_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO VR_Y_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+

@@ -1,0 +1,43 @@
+<!-- ##### SECTION Title ##### -->
+FontTableCache
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT FontTableCacheEntry ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_H_IN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION find ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+

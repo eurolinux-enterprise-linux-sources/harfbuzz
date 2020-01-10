@@ -1,0 +1,40 @@
+<!-- ##### SECTION Title ##### -->
+hb-coretext
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION hb_coretext_face_get_cg_font ##### -->
+<para>
+
+</para>
+
+@face: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_coretext_font_get_ct_font ##### -->
+<para>
+
+</para>
+
+@font: 
+@Returns: 
+
+

@@ -1,0 +1,303 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-shaper-private
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION HB_ArabicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_BasicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### ENUM HB_CombiningClass ##### -->
+<para>
+
+</para>
+
+@HB_Combining_BelowLeftAttached: 
+@HB_Combining_BelowAttached: 
+@HB_Combining_BelowRightAttached: 
+@HB_Combining_LeftAttached: 
+@HB_Combining_RightAttached: 
+@HB_Combining_AboveLeftAttached: 
+@HB_Combining_AboveAttached: 
+@HB_Combining_AboveRightAttached: 
+@HB_Combining_BelowLeft: 
+@HB_Combining_Below: 
+@HB_Combining_BelowRight: 
+@HB_Combining_Left: 
+@HB_Combining_Right: 
+@HB_Combining_AboveLeft: 
+@HB_Combining_Above: 
+@HB_Combining_AboveRight: 
+@HB_Combining_DoubleBelow: 
+@HB_Combining_DoubleAbove: 
+@HB_Combining_IotaSubscript: 
+
+<!-- ##### FUNCTION HB_ConvertStringToGlyphIndices ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### MACRO HB_DECLARE_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+
+
+<!-- ##### MACRO HB_FREE_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Name: 
+
+
+<!-- ##### MACRO HB_GetGlyphAdvances ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+
+
+<!-- ##### FUNCTION HB_GreekShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_HangulShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_HebrewShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_HeuristicPosition ##### -->
+<para>
+
+</para>
+
+@item: 
+
+
+<!-- ##### FUNCTION HB_HeuristicSetGlyphAttributes ##### -->
+<para>
+
+</para>
+
+@item: 
+
+
+<!-- ##### MACRO HB_INIT_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+@Length: 
+
+
+<!-- ##### FUNCTION HB_IndicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### MACRO HB_IsControlChar ##### -->
+<para>
+
+</para>
+
+@uc: 
+
+
+<!-- ##### FUNCTION HB_KhmerShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_MyanmarShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### STRUCT HB_OpenTypeFeature ##### -->
+<para>
+
+</para>
+
+@tag: 
+@property: 
+
+<!-- ##### FUNCTION HB_OpenTypePosition ##### -->
+<para>
+
+</para>
+
+@item: 
+@availableGlyphs: 
+@doLogClusters: 
+@Returns: 
+
+
+<!-- ##### ENUM HB_OpenTypeProperty ##### -->
+<para>
+
+</para>
+
+@LocaProperty: 
+@CcmpProperty: 
+@InitProperty: 
+@IsolProperty: 
+@FinaProperty: 
+@MediProperty: 
+@RligProperty: 
+@CaltProperty: 
+@LigaProperty: 
+@DligProperty: 
+@CswhProperty: 
+@MsetProperty: 
+@NuktaProperty: 
+@AkhantProperty: 
+@RephProperty: 
+@PreFormProperty: 
+@BelowFormProperty: 
+@AboveFormProperty: 
+@HalfFormProperty: 
+@PostFormProperty: 
+@ConjunctFormProperty: 
+@VattuProperty: 
+@PreSubstProperty: 
+@BelowSubstProperty: 
+@AboveSubstProperty: 
+@PostSubstProperty: 
+@HalantProperty: 
+@CligProperty: 
+@IndicCaltProperty: 
+
+<!-- ##### FUNCTION HB_OpenTypeShape ##### -->
+<para>
+
+</para>
+
+@item: 
+@properties: 
+@Returns: 
+
+
+<!-- ##### MACRO HB_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+@Length: 
+
+
+<!-- ##### STRUCT HB_ScriptEngine ##### -->
+<para>
+
+</para>
+
+@shape: 
+
+<!-- ##### FUNCTION HB_SelectScript ##### -->
+<para>
+
+</para>
+
+@item: 
+@features: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION HB_ShapeFunction ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### FUNCTION HB_TibetanShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+
+<!-- ##### MACRO PositioningProperties ##### -->
+<para>
+
+</para>
+
+
+

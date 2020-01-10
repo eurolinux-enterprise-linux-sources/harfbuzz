@@ -60,45 +60,19 @@ _cairo_eps_surface_create_for_stream (cairo_write_func_t  write_func,
 #  endif
 #endif
 
-
-static FT_Library ft_library;
-
-static inline
-void free_ft_library (void)
-{
-  FT_Done_FreeType (ft_library);
-}
-
 cairo_scaled_font_t *
-helper_cairo_create_scaled_font (const font_options_t *font_opts)
+helper_cairo_create_scaled_font (const font_options_t *font_opts,
+				 double font_size)
 {
   hb_font_t *font = hb_font_reference (font_opts->get_font ());
 
   cairo_font_face_t *cairo_face;
-  /* We cannot use the FT_Face from hb_font_t, as doing so will confuse hb_font_t because
-   * cairo will reset the face size.  As such, create new face... */
-  FT_Face ft_face = NULL;//hb_ft_font_get_face (font);
+  FT_Face ft_face = hb_ft_font_get_face (font);
   if (!ft_face)
-  {
-    if (!ft_library)
-    {
-      FT_Init_FreeType (&ft_library);
-#ifdef HAVE_ATEXIT
-      atexit (free_ft_library);
-#endif
-    }
-    FT_New_Face (ft_library,
-		 font_opts->font_file,
-		 font_opts->face_index,
-		 &ft_face);
-  }
-  if (!ft_face)
-  {
     /* This allows us to get some boxes at least... */
     cairo_face = cairo_toy_font_face_create ("@cairo:sans",
 					     CAIRO_FONT_SLANT_NORMAL,
 					     CAIRO_FONT_WEIGHT_NORMAL);
-  }
   else
     cairo_face = cairo_ft_font_face_create_for_ft_face (ft_face, 0);
   cairo_matrix_t ctm, font_matrix;
@@ -106,8 +80,7 @@ helper_cairo_create_scaled_font (const font_options_t *font_opts)
 
   cairo_matrix_init_identity (&ctm);
   cairo_matrix_init_scale (&font_matrix,
-			   font_opts->font_size_x,
-			   font_opts->font_size_y);
+			   font_size, font_size);
   font_options = cairo_font_options_create ();
   cairo_font_options_set_hint_style (font_options, CAIRO_HINT_STYLE_NONE);
   cairo_font_options_set_hint_metrics (font_options, CAIRO_HINT_METRICS_OFF);
@@ -128,22 +101,6 @@ helper_cairo_create_scaled_font (const font_options_t *font_opts)
     hb_font_destroy (font);
 
   return scaled_font;
-}
-
-bool
-helper_cairo_scaled_font_has_color (cairo_scaled_font_t *scaled_font)
-{
-  bool ret = false;
-#ifdef FT_HAS_COLOR
-  FT_Face ft_face = cairo_ft_scaled_font_lock_face (scaled_font);
-  if (ft_face)
-  {
-    if (FT_HAS_COLOR (ft_face))
-      ret = true;
-    cairo_ft_scaled_font_unlock_face (scaled_font);
-  }
-#endif
-  return ret;
 }
 
 
@@ -289,32 +246,29 @@ stdio_write_func (void                *closure,
   return CAIRO_STATUS_SUCCESS;
 }
 
-const char *helper_cairo_supported_formats[] =
-{
-  "ansi",
+const char helper_cairo_supported_formats[] =
+  "ansi"
   #ifdef CAIRO_HAS_PNG_FUNCTIONS
-  "png",
+  "/png"
   #endif
   #ifdef CAIRO_HAS_SVG_SURFACE
-  "svg",
+  "/svg"
   #endif
   #ifdef CAIRO_HAS_PDF_SURFACE
-  "pdf",
+  "/pdf"
   #endif
   #ifdef CAIRO_HAS_PS_SURFACE
-  "ps",
+  "/ps"
    #ifdef HAS_EPS
-    "eps",
+    "/eps"
    #endif
   #endif
-  NULL
-};
+;
 
 cairo_t *
 helper_cairo_create_context (double w, double h,
 			     view_options_t *view_opts,
-			     output_options_t *out_opts,
-			     cairo_content_t content)
+			     output_options_t *out_opts)
 {
   cairo_surface_t *(*constructor) (cairo_write_func_t write_func,
 				   void *closure,
@@ -343,47 +297,42 @@ helper_cairo_create_context (double w, double h,
   }
   if (0)
     ;
-    else if (0 == g_ascii_strcasecmp (extension, "ansi"))
+    else if (0 == strcasecmp (extension, "ansi"))
       constructor2 = _cairo_ansi_surface_create_for_stream;
   #ifdef CAIRO_HAS_PNG_FUNCTIONS
-    else if (0 == g_ascii_strcasecmp (extension, "png"))
+    else if (0 == strcasecmp (extension, "png"))
       constructor2 = _cairo_png_surface_create_for_stream;
   #endif
   #ifdef CAIRO_HAS_SVG_SURFACE
-    else if (0 == g_ascii_strcasecmp (extension, "svg"))
+    else if (0 == strcasecmp (extension, "svg"))
       constructor = cairo_svg_surface_create_for_stream;
   #endif
   #ifdef CAIRO_HAS_PDF_SURFACE
-    else if (0 == g_ascii_strcasecmp (extension, "pdf"))
+    else if (0 == strcasecmp (extension, "pdf"))
       constructor = cairo_pdf_surface_create_for_stream;
   #endif
   #ifdef CAIRO_HAS_PS_SURFACE
-    else if (0 == g_ascii_strcasecmp (extension, "ps"))
+    else if (0 == strcasecmp (extension, "ps"))
       constructor = cairo_ps_surface_create_for_stream;
    #ifdef HAS_EPS
-    else if (0 == g_ascii_strcasecmp (extension, "eps"))
+    else if (0 == strcasecmp (extension, "eps"))
       constructor = _cairo_eps_surface_create_for_stream;
    #endif
   #endif
 
 
   unsigned int fr, fg, fb, fa, br, bg, bb, ba;
-  const char *color;
   br = bg = bb = 0; ba = 255;
-  color = view_opts->back ? view_opts->back : DEFAULT_BACK;
-  sscanf (color + (*color=='#'), "%2x%2x%2x%2x", &br, &bg, &bb, &ba);
+  sscanf (view_opts->back + (*view_opts->back=='#'), "%2x%2x%2x%2x", &br, &bg, &bb, &ba);
   fr = fg = fb = 0; fa = 255;
-  color = view_opts->fore ? view_opts->fore : DEFAULT_FORE;
-  sscanf (color + (*color=='#'), "%2x%2x%2x%2x", &fr, &fg, &fb, &fa);
+  sscanf (view_opts->fore + (*view_opts->fore=='#'), "%2x%2x%2x%2x", &fr, &fg, &fb, &fa);
 
-  if (content == CAIRO_CONTENT_ALPHA)
-  {
-    if (view_opts->annotate ||
-	br != bg || bg != bb ||
-	fr != fg || fg != fb)
-      content = CAIRO_CONTENT_COLOR;
-  }
-  if (ba != 255)
+  cairo_content_t content;
+  if (!view_opts->annotate && ba == 255 && br == bg && bg == bb && fr == fg && fg == fb)
+    content = CAIRO_CONTENT_ALPHA;
+  else if (ba == 255)
+    content = CAIRO_CONTENT_COLOR;
+  else
     content = CAIRO_CONTENT_COLOR_ALPHA;
 
   cairo_surface_t *surface;
@@ -394,8 +343,7 @@ helper_cairo_create_context (double w, double h,
     surface = constructor2 (stdio_write_func, f, w, h, content);
   else
     fail (false, "Unknown output format `%s'; supported formats are: %s%s",
-	  extension,
-	  g_strjoinv ("/", const_cast<char**> (helper_cairo_supported_formats)),
+	  extension, helper_cairo_supported_formats,
 	  out_opts->explicit_output_format ? "" :
 	  "\nTry setting format using --output-format");
 
@@ -447,7 +395,7 @@ helper_cairo_line_from_buffer (helper_cairo_line_t *l,
 			       hb_buffer_t         *buffer,
 			       const char          *text,
 			       unsigned int         text_len,
-			       int                  scale_bits,
+			       double               scale,
 			       hb_bool_t            utf8_clusters)
 {
   memset (l, 0, sizeof (*l));
@@ -480,16 +428,16 @@ helper_cairo_line_from_buffer (helper_cairo_line_t *l,
   for (i = 0; i < (int) l->num_glyphs; i++)
   {
     l->glyphs[i].index = hb_glyph[i].codepoint;
-    l->glyphs[i].x = scalbn ((double)  hb_position->x_offset + x, scale_bits);
-    l->glyphs[i].y = scalbn ((double) -hb_position->y_offset + y, scale_bits);
+    l->glyphs[i].x = ( hb_position->x_offset + x) * scale;
+    l->glyphs[i].y = (-hb_position->y_offset + y) * scale;
     x +=  hb_position->x_advance;
     y += -hb_position->y_advance;
 
     hb_position++;
   }
   l->glyphs[i].index = -1;
-  l->glyphs[i].x = scalbn ((double) x, scale_bits);
-  l->glyphs[i].y = scalbn ((double) y, scale_bits);
+  l->glyphs[i].x = x * scale;
+  l->glyphs[i].y = y * scale;
 
   if (l->num_clusters) {
     memset ((void *) l->clusters, 0, l->num_clusters * sizeof (l->clusters[0]));

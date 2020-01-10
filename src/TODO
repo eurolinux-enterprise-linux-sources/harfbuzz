@@ -9,13 +9,23 @@ General fixes:
 
 - mask propagation? (when ligation, "or" the masks).
 
+- Warn at compile time (and runtime with HB_DEBUG?) if no Unicode / font
+  funcs found / set.
 
-API issues:
-===========
+- Misc features:
+  * init/medi/fina/isol for non-cursive scripts
+
+
+API issues to fix before 1.0:
+============================
 
 - API to accept a list of languages?
 
 - Add init_func to font_funcs.  Adjust ft.
+
+- hb-ft load_flags issues.
+
+- Add pkg-config files for glue codes (harfbuzz-glib, etc)
 
 - 'const' for getter APIs? (use mutable internally)
 
@@ -33,9 +43,11 @@ API additions
 
 - Add sanitize API (and a cached version, that saves result on blob user-data)
 
+- Add glib GBoxedType stuff and introspection
+
 - BCP 47 language handling / API (language_matches?)
 
-- Add hb_font_create_unscaled()?
+- Add hb_font_create_linear()?
 
 - Add query / enumeration API for aalt-like features?
 
@@ -49,7 +61,7 @@ API additions
 hb-view / hb-shape enhancements:
 ===============================
 
-- Add --width, --height, --auto-size, --ink-box, --align, etc?
+- Add --width, --height, --auto-size, --align, etc?
 
 
 Tests to write:

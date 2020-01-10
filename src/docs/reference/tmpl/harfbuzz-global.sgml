@@ -1,0 +1,236 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-global
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### TYPEDEF HB_16Dot16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_BEGIN_HEADER ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_BEGIN_VISIBILITY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### TYPEDEF HB_Bool ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Byte ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Char ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_END_HEADER ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_END_VISIBILITY ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM HB_Error ##### -->
+<para>
+
+</para>
+
+@HB_Err_Ok: 
+@HB_Err_Not_Covered: 
+@HB_Err_Invalid_Argument: 
+@HB_Err_Invalid_SubTable_Format: 
+@HB_Err_Invalid_SubTable: 
+@HB_Err_Read_Error: 
+@HB_Err_Out_Of_Memory: 
+
+<!-- ##### MACRO HB_FIXED_CONSTANT ##### -->
+<para>
+
+</para>
+
+@v: 
+
+
+<!-- ##### MACRO HB_FIXED_ROUND ##### -->
+<para>
+
+</para>
+
+@v: 
+
+
+<!-- ##### TYPEDEF HB_Face ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Fixed ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_FixedPoint ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+
+<!-- ##### TYPEDEF HB_Font ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Glyph ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Int ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_MAKE_TAG ##### -->
+<para>
+
+</para>
+
+@_x1: 
+@_x2: 
+@_x3: 
+@_x4: 
+
+
+<!-- ##### TYPEDEF HB_Pointer ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Short ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Stream ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Tag ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UChar16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UChar32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UInt ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UShort ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int8 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint8 ##### -->
+<para>
+
+</para>
+
+

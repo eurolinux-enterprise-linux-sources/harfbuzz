@@ -35,38 +35,32 @@ namespace OT {
 
 /*
  * hmtx -- The Horizontal Metrics Table
- * vmtx -- The Vertical Metrics Table
  */
 
 #define HB_OT_TAG_hmtx HB_TAG('h','m','t','x')
-#define HB_OT_TAG_vmtx HB_TAG('v','m','t','x')
 
 
-struct LongMetric
+struct LongHorMetric
 {
-  UFWORD	advance; /* Advance width/height. */
-  FWORD		lsb; /* Leading (left/top) side bearing. */
+  USHORT	advanceWidth;
+  SHORT		lsb;
   public:
   DEFINE_SIZE_STATIC (4);
 };
 
-struct _mtx
+struct hmtx
 {
-  static const hb_tag_t tableTag = HB_TAG('_','m','t','x');
+  static const hb_tag_t Tag	= HB_OT_TAG_hmtx;
 
-  static const hb_tag_t hmtxTag	= HB_OT_TAG_hmtx;
-  static const hb_tag_t vmtxTag	= HB_OT_TAG_vmtx;
-
-  inline bool sanitize (hb_sanitize_context_t *c) const
-  {
+  inline bool sanitize (hb_sanitize_context_t *c) {
     TRACE_SANITIZE (this);
     /* We don't check for anything specific here.  The users of the
      * struct do all the hard work... */
-    return_trace (true);
+    return TRACE_RETURN (true);
   }
 
-  public:
-  LongMetric	longMetric[VAR];	/* Paired advance width and leading
+  protected:
+  LongHorMetric	longHorMetric[VAR];	/* Paired advance width and left side
 					 * bearing values for each glyph. The
 					 * value numOfHMetrics comes from
 					 * the 'hhea' table. If the font is
@@ -74,29 +68,23 @@ struct _mtx
 					 * be in the array, but that entry is
 					 * required. The last entry applies to
 					 * all subsequent glyphs. */
-  FWORD		leadingBearingX[VAR];	/* Here the advance is assumed
-					 * to be the same as the advance
+  SHORT		leftSideBearingX[VAR];	/* Here the advanceWidth is assumed
+					 * to be the same as the advanceWidth
 					 * for the last entry above. The
 					 * number of entries in this array is
 					 * derived from numGlyphs (from 'maxp'
-					 * table) minus numberOfLongMetrics.
-					 * This generally is used with a run
-					 * of monospaced glyphs (e.g., Kanji
+					 * table) minus numberOfHMetrics. This
+					 * generally is used with a run of
+					 * monospaced glyphs (e.g., Kanji
 					 * fonts or Courier fonts). Only one
 					 * run is allowed and it must be at
 					 * the end. This allows a monospaced
-					 * font to vary the side bearing
+					 * font to vary the left side bearing
 					 * values for each glyph. */
   public:
-  DEFINE_SIZE_ARRAY2 (0, longMetric, leadingBearingX);
+  DEFINE_SIZE_ARRAY2 (0, longHorMetric, leftSideBearingX);
 };
 
-struct hmtx : _mtx {
-  static const hb_tag_t tableTag	= HB_OT_TAG_hmtx;
-};
-struct vmtx : _mtx {
-  static const hb_tag_t tableTag	= HB_OT_TAG_vmtx;
-};
 
 } /* namespace OT */
 

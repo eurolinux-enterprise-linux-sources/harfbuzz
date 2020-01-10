@@ -36,7 +36,6 @@
 #include <unicode/uchar.h>
 #include <unicode/unorm.h>
 #include <unicode/ustring.h>
-#include <unicode/utf16.h>
 #include <unicode/uversion.h>
 
 
@@ -324,7 +323,7 @@ hb_icu_unicode_decompose_compatibility (hb_unicode_funcs_t *ufuncs HB_UNUSED,
 
   /* Copy @u into a UTF-16 array to be passed to ICU. */
   len = 0;
-  err = false;
+  err = FALSE;
   U16_APPEND (utf16, len, ARRAY_LENGTH (utf16), u, err);
   if (err)
     return 0;
@@ -364,8 +363,10 @@ hb_icu_get_unicode_funcs (void)
   if (!hb_atomic_ptr_get (&normalizer)) {
     UErrorCode icu_err = U_ZERO_ERROR;
     /* We ignore failure in getNFCInstace(). */
-    (void) hb_atomic_ptr_cmpexch (&normalizer, NULL, unorm2_getNFCInstance (&icu_err));
+    hb_atomic_ptr_cmpexch (&normalizer, NULL, unorm2_getNFCInstance (&icu_err));
   }
 #endif
   return const_cast<hb_unicode_funcs_t *> (&_hb_icu_unicode_funcs);
 }
+
+

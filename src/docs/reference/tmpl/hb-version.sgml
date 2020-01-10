@@ -1,0 +1,90 @@
+<!-- ##### SECTION Title ##### -->
+hb-version
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO HB_VERSION_CHECK ##### -->
+<para>
+
+</para>
+
+@major: 
+@minor: 
+@micro: 
+
+
+<!-- ##### MACRO HB_VERSION_MAJOR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_VERSION_MICRO ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_VERSION_MINOR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_VERSION_STRING ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION hb_version ##### -->
+<para>
+
+</para>
+
+@major: 
+@minor: 
+@micro: 
+
+
+<!-- ##### FUNCTION hb_version_check ##### -->
+<para>
+
+</para>
+
+@major: 
+@minor: 
+@micro: 
+@Returns: 
+
+
+<!-- ##### FUNCTION hb_version_string ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+

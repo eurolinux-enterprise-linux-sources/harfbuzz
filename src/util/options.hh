@@ -54,37 +54,14 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
-#if !GLIB_CHECK_VERSION (2, 22, 0)
-# define g_mapped_file_unref g_mapped_file_free
-#endif
-
-
-/* A few macros copied from hb-private.hh. */
-
-#if __GNUC__ >= 4
-#define HB_UNUSED	__attribute__((unused))
-#else
-#define HB_UNUSED
-#endif
-
 #undef MIN
 template <typename Type> static inline Type MIN (const Type &a, const Type &b) { return a < b ? a : b; }
 
 #undef MAX
 template <typename Type> static inline Type MAX (const Type &a, const Type &b) { return a > b ? a : b; }
 
-#undef  ARRAY_LENGTH
-template <typename Type, unsigned int n>
-static inline unsigned int ARRAY_LENGTH (const Type (&)[n]) { return n; }
-/* A const version, but does not detect erratically being called on pointers. */
-#define ARRAY_LENGTH_CONST(__array) ((signed int) (sizeof (__array) / sizeof (__array[0])))
 
-#define _ASSERT_STATIC1(_line, _cond)	HB_UNUSED typedef int _static_assert_on_line_##_line##_failed[(_cond)?1:-1]
-#define _ASSERT_STATIC0(_line, _cond)	_ASSERT_STATIC1 (_line, (_cond))
-#define ASSERT_STATIC(_cond)		_ASSERT_STATIC0 (__LINE__, (_cond))
-
-
-void fail (hb_bool_t suggest_help, const char *format, ...) G_GNUC_NORETURN G_GNUC_PRINTF (2, 3);
+void fail (hb_bool_t suggest_help, const char *format, ...) G_GNUC_NORETURN;
 
 
 extern hb_bool_t debug;
@@ -104,14 +81,11 @@ struct option_parser_t
     memset (this, 0, sizeof (*this));
     usage_str = usage;
     context = g_option_context_new (usage);
-    to_free = g_ptr_array_new ();
 
     add_main_options ();
   }
   ~option_parser_t (void) {
     g_option_context_free (context);
-    g_ptr_array_foreach (to_free, (GFunc) g_free, NULL);
-    g_ptr_array_free (to_free, TRUE);
   }
 
   void add_main_options (void);
@@ -122,10 +96,6 @@ struct option_parser_t
 		  const gchar    *help_description,
 		  option_group_t *option_group);
 
-  void free_later (char *p) {
-    g_ptr_array_add (to_free, p);
-  }
-
   void parse (int *argc, char ***argv);
 
   G_GNUC_NORETURN void usage (void) {
@@ -133,45 +103,39 @@ struct option_parser_t
     exit (1);
   }
 
-  private:
   const char *usage_str;
   GOptionContext *context;
-  GPtrArray *to_free;
 };
 
 
 #define DEFAULT_MARGIN 16
 #define DEFAULT_FORE "#000000"
 #define DEFAULT_BACK "#FFFFFF"
-#define FONT_SIZE_UPEM 0x7FFFFFFF
-#define FONT_SIZE_NONE 0
+#define DEFAULT_FONT_SIZE 256
 
 struct view_options_t : option_group_t
 {
   view_options_t (option_parser_t *parser) {
     annotate = false;
-    fore = NULL;
-    back = NULL;
+    fore = DEFAULT_FORE;
+    back = DEFAULT_BACK;
     line_space = 0;
     margin.t = margin.r = margin.b = margin.l = DEFAULT_MARGIN;
+    font_size = DEFAULT_FONT_SIZE;
 
     add_options (parser);
-  }
-  ~view_options_t (void)
-  {
-    g_free (fore);
-    g_free (back);
   }
 
   void add_options (option_parser_t *parser);
 
   hb_bool_t annotate;
-  char *fore;
-  char *back;
+  const char *fore;
+  const char *back;
   double line_space;
   struct margin_t {
     double t, r, b, l;
   } margin;
+  double font_size;
 };
 
 
@@ -185,7 +149,6 @@ struct shape_options_t : option_group_t
     num_features = 0;
     shapers = NULL;
     utf8_clusters = false;
-    cluster_level = HB_BUFFER_CLUSTER_LEVEL_DEFAULT;
     normalize_glyphs = false;
     num_iterations = 1;
 
@@ -193,9 +156,6 @@ struct shape_options_t : option_group_t
   }
   ~shape_options_t (void)
   {
-    g_free (direction);
-    g_free (language);
-    g_free (script);
     free (features);
     g_strfreev (shapers);
   }
@@ -211,7 +171,6 @@ struct shape_options_t : option_group_t
 			 (bot ? HB_BUFFER_FLAG_BOT : 0) |
 			 (eot ? HB_BUFFER_FLAG_EOT : 0) |
 			 (preserve_default_ignorables ? HB_BUFFER_FLAG_PRESERVE_DEFAULT_IGNORABLES : 0)));
-    hb_buffer_set_cluster_level (buffer, cluster_level);
     hb_buffer_guess_segment_properties (buffer);
   }
 
@@ -262,9 +221,9 @@ struct shape_options_t : option_group_t
   }
 
   /* Buffer properties */
-  char *direction;
-  char *language;
-  char *script;
+  const char *direction;
+  const char *language;
+  const char *script;
 
   /* Buffer flags */
   hb_bool_t bot;
@@ -275,7 +234,6 @@ struct shape_options_t : option_group_t
   unsigned int num_features;
   char **shapers;
   hb_bool_t utf8_clusters;
-  hb_buffer_cluster_level_t cluster_level;
   hb_bool_t normalize_glyphs;
   unsigned int num_iterations;
 };
@@ -283,23 +241,15 @@ struct shape_options_t : option_group_t
 
 struct font_options_t : option_group_t
 {
-  font_options_t (option_parser_t *parser,
-		  int default_font_size_,
-		  unsigned int subpixel_bits_) {
-    default_font_size = default_font_size_;
-    subpixel_bits = subpixel_bits_;
+  font_options_t (option_parser_t *parser) {
     font_file = NULL;
     face_index = 0;
-    font_size_x = font_size_y = default_font_size;
-    font_funcs = NULL;
 
     font = NULL;
 
     add_options (parser);
   }
   ~font_options_t (void) {
-    g_free (font_file);
-    g_free (font_funcs);
     hb_font_destroy (font);
   }
 
@@ -307,13 +257,8 @@ struct font_options_t : option_group_t
 
   hb_font_t *get_font (void) const;
 
-  char *font_file;
+  const char *font_file;
   int face_index;
-  int default_font_size;
-  unsigned int subpixel_bits;
-  mutable double font_size_x;
-  mutable double font_size_y;
-  char *font_funcs;
 
   private:
   mutable hb_font_t *font;
@@ -331,16 +276,11 @@ struct text_options_t : option_group_t
 
     fp = NULL;
     gs = NULL;
-    line = NULL;
-    line_len = (unsigned int) -1;
+    text_len = (unsigned int) -1;
 
     add_options (parser);
   }
   ~text_options_t (void) {
-    g_free (text_before);
-    g_free (text_after);
-    g_free (text);
-    g_free (text_file);
     if (gs)
       g_string_free (gs, true);
     if (fp)
@@ -354,27 +294,27 @@ struct text_options_t : option_group_t
       g_set_error (error,
 		   G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
 		   "Only one of text and text-file can be set");
+
   };
 
   const char *get_line (unsigned int *len);
 
-  char *text_before;
-  char *text_after;
+  const char *text_before;
+  const char *text_after;
 
-  char *text;
-  char *text_file;
+  const char *text;
+  const char *text_file;
 
   private:
   FILE *fp;
   GString *gs;
-  char *line;
-  unsigned int line_len;
+  unsigned int text_len;
 };
 
 struct output_options_t : option_group_t
 {
   output_options_t (option_parser_t *parser,
-		    const char **supported_formats_ = NULL) {
+		    const char *supported_formats_ = NULL) {
     output_file = NULL;
     output_format = NULL;
     supported_formats = supported_formats_;
@@ -385,8 +325,6 @@ struct output_options_t : option_group_t
     add_options (parser);
   }
   ~output_options_t (void) {
-    g_free (output_file);
-    g_free (output_format);
     if (fp)
       fclose (fp);
   }
@@ -401,10 +339,7 @@ struct output_options_t : option_group_t
     if (output_file && !output_format) {
       output_format = strrchr (output_file, '.');
       if (output_format)
-      {
 	  output_format++; /* skip the dot */
-	  output_format = strdup (output_format);
-      }
     }
 
     if (output_file && 0 == strcmp (output_file, "-"))
@@ -413,9 +348,9 @@ struct output_options_t : option_group_t
 
   FILE *get_file_handle (void);
 
-  char *output_file;
-  char *output_format;
-  const char **supported_formats;
+  const char *output_file;
+  const char *output_format;
+  const char *supported_formats;
   bool explicit_output_format;
 
   mutable FILE *fp;
@@ -430,7 +365,6 @@ struct format_options_t : option_group_t
     show_text = false;
     show_unicode = false;
     show_line_num = false;
-    show_extents = false;
 
     add_options (parser);
   }
@@ -471,25 +405,7 @@ struct format_options_t : option_group_t
   hb_bool_t show_text;
   hb_bool_t show_unicode;
   hb_bool_t show_line_num;
-  hb_bool_t show_extents;
 };
 
-/* fallback implementation for scalbn()/scalbnf() for pre-2013 MSVC */
-#if defined (_MSC_VER) && (_MSC_VER < 1800)
-
-#ifndef FLT_RADIX
-#define FLT_RADIX 2
-#endif
-
-__inline long double scalbn (long double x, int exp)
-{
-  return x * (pow ((long double) FLT_RADIX, exp));
-}
-
-__inline float scalbnf (float x, int exp)
-{
-  return x * (pow ((float) FLT_RADIX, exp));
-}
-#endif
 
 #endif

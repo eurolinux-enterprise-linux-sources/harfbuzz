@@ -1,0 +1,117 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-stream-private
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO ACCESS_Frame ##### -->
+<para>
+
+</para>
+
+@size: 
+
+
+<!-- ##### MACRO FILE_Pos ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO FILE_Seek ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+
+<!-- ##### MACRO FORGET_Frame ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_Byte ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_Char ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_Long ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_Short ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_Tag4 ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_ULong ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GET_UShort ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GOTO_Table ##### -->
+<para>
+
+</para>
+
+@tag: 
+
+
+<!-- ##### MACRO SET_ERR ##### -->
+<para>
+
+</para>
+
+@c: 
+
+

@@ -31,7 +31,8 @@
 struct output_buffer_t
 {
   output_buffer_t (option_parser_t *parser)
-		  : options (parser, hb_buffer_serialize_list_formats ()),
+		  : options (parser,
+			     g_strjoinv ("/", (gchar**) hb_buffer_serialize_list_formats ())),
 		    format (parser),
 		    gs (NULL),
 		    line_no (0),
@@ -48,15 +49,11 @@ struct output_buffer_t
       output_format = HB_BUFFER_SERIALIZE_FORMAT_TEXT;
     else
       output_format = hb_buffer_serialize_format_from_string (options.output_format, -1);
-    /* An empty "output_format" parameter basically skips output generating.
-     * Useful for benchmarking. */
-    if ((!options.output_format || *options.output_format) &&
-	!hb_buffer_serialize_format_to_string (output_format))
+    if (!hb_buffer_serialize_format_to_string (output_format))
     {
       if (options.explicit_output_format)
 	fail (false, "Unknown output format `%s'; supported formats are: %s",
-	      options.output_format,
-	      g_strjoinv ("/", const_cast<char**> (options.supported_formats)));
+	      options.output_format, options.supported_formats);
       else
 	/* Just default to TEXT if not explicitly requested and the
 	 * file extension is not recognized. */
@@ -70,8 +67,6 @@ struct output_buffer_t
       flags |= HB_BUFFER_SERIALIZE_FLAG_NO_CLUSTERS;
     if (!format.show_positions)
       flags |= HB_BUFFER_SERIALIZE_FLAG_NO_POSITIONS;
-    if (format.show_extents)
-      flags |= HB_BUFFER_SERIALIZE_FLAG_GLYPH_EXTENTS;
     format_flags = (hb_buffer_serialize_flags_t) flags;
   }
   void new_line (void)
@@ -128,6 +123,6 @@ struct output_buffer_t
 int
 main (int argc, char **argv)
 {
-  main_font_text_t<shape_consumer_t<output_buffer_t>, FONT_SIZE_UPEM, 0> driver;
+  main_font_text_t<shape_consumer_t<output_buffer_t> > driver;
   return driver.main (argc, argv);
 }

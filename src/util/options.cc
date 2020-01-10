@@ -29,22 +29,6 @@
 #ifdef HAVE_FREETYPE
 #include <hb-ft.h>
 #endif
-#ifdef HAVE_OT
-#include <hb-ot.h>
-#endif
-
-struct supported_font_funcs_t {
-	char name[4];
-	void (*func) (hb_font_t *);
-} supported_font_funcs[] =
-{
-#ifdef HAVE_FREETYPE
-  {"ft",	hb_ft_font_set_funcs},
-#endif
-#ifdef HAVE_OT
-  {"ot",	hb_ot_font_set_funcs},
-#endif
-};
 
 
 void
@@ -55,7 +39,6 @@ fail (hb_bool_t suggest_help, const char *format, ...)
   va_list vap;
   va_start (vap, format);
   msg = g_strdup_vprintf (format, vap);
-  va_end (vap);
   const char *prgname = g_get_prgname ();
   g_printerr ("%s: %s\n", prgname, msg);
   if (suggest_help)
@@ -174,7 +157,7 @@ parse_margin (const char *name G_GNUC_UNUSED,
 {
   view_options_t *view_opts = (view_options_t *) data;
   view_options_t::margin_t &m = view_opts->margin;
-  switch (sscanf (arg, "%lf%*[ ,]%lf%*[ ,]%lf%*[ ,]%lf", &m.t, &m.r, &m.b, &m.l)) {
+  switch (sscanf (arg, "%lf %lf %lf %lf", &m.t, &m.r, &m.b, &m.l)) {
     case 1: m.r = m.t;
     case 2: m.b = m.t;
     case 3: m.l = m.r;
@@ -261,10 +244,11 @@ view_options_t::add_options (option_parser_t *parser)
   GOptionEntry entries[] =
   {
     {"annotate",	0, 0, G_OPTION_ARG_NONE,	&this->annotate,		"Annotate output rendering",				NULL},
-    {"background",	0, 0, G_OPTION_ARG_STRING,	&this->back,			"Set background color (default: " DEFAULT_BACK ")",	"rrggbb/rrggbbaa"},
-    {"foreground",	0, 0, G_OPTION_ARG_STRING,	&this->fore,			"Set foreground color (default: " DEFAULT_FORE ")",	"rrggbb/rrggbbaa"},
+    {"background",	0, 0, G_OPTION_ARG_STRING,	&this->back,			"Set background color (default: " DEFAULT_BACK ")",	"red/#rrggbb/#rrggbbaa"},
+    {"foreground",	0, 0, G_OPTION_ARG_STRING,	&this->fore,			"Set foreground color (default: " DEFAULT_FORE ")",	"red/#rrggbb/#rrggbbaa"},
     {"line-space",	0, 0, G_OPTION_ARG_DOUBLE,	&this->line_space,		"Set space between lines (default: 0)",			"units"},
     {"margin",		0, 0, G_OPTION_ARG_CALLBACK,	(gpointer) &parse_margin,	"Margin around output (default: " G_STRINGIFY(DEFAULT_MARGIN) ")","one to four numbers"},
+    {"font-size",	0, 0, G_OPTION_ARG_DOUBLE,	&this->font_size,		"Font size (default: " G_STRINGIFY(DEFAULT_FONT_SIZE) ")","size"},
     {NULL}
   };
   parser->add_group (entries,
@@ -283,7 +267,7 @@ shape_options_t::add_options (option_parser_t *parser)
 			      G_OPTION_ARG_CALLBACK,	(gpointer) &list_shapers,	"List available shapers and quit",	NULL},
     {"shaper",		0, G_OPTION_FLAG_HIDDEN,
 			      G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	"Hidden duplicate of --shapers",	NULL},
-    {"shapers",		0, 0, G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	"Set comma-separated list of shapers to try","list"},
+    {"shapers",		0, 0, G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	"Comma-separated list of shapers to try","list"},
     {"direction",	0, 0, G_OPTION_ARG_STRING,	&this->direction,		"Set text direction (default: auto)",	"ltr/rtl/ttb/btt"},
     {"language",	0, 0, G_OPTION_ARG_STRING,	&this->language,		"Set text language (default: $LANG)",	"langstr"},
     {"script",		0, 0, G_OPTION_ARG_STRING,	&this->script,			"Set text script (default: auto)",	"ISO-15924 tag"},
@@ -291,7 +275,6 @@ shape_options_t::add_options (option_parser_t *parser)
     {"eot",		0, 0, G_OPTION_ARG_NONE,	&this->eot,			"Treat text as end-of-paragraph",	NULL},
     {"preserve-default-ignorables",0, 0, G_OPTION_ARG_NONE,	&this->preserve_default_ignorables,	"Preserve Default-Ignorable characters",	NULL},
     {"utf8-clusters",	0, 0, G_OPTION_ARG_NONE,	&this->utf8_clusters,		"Use UTF8 byte indices, not char indices",	NULL},
-    {"cluster-level",	0, 0, G_OPTION_ARG_INT,		&this->cluster_level,		"Cluster merging level (default: 0)",	"0/1/2"},
     {"normalize-glyphs",0, 0, G_OPTION_ARG_NONE,	&this->normalize_glyphs,	"Rearrange glyph clusters in nominal order",	NULL},
     {"num-iterations",	0, 0, G_OPTION_ARG_INT,		&this->num_iterations,		"Run shaper N times (default: 1)",	"N"},
     {NULL}
@@ -305,9 +288,7 @@ shape_options_t::add_options (option_parser_t *parser)
   const gchar *features_help = "Comma-separated list of font features\n"
     "\n"
     "    Features can be enabled or disabled, either globally or limited to\n"
-    "    specific character ranges.  The format for specifying feature settings\n"
-    "    follows.  All valid CSS font-feature-settings values other than 'normal'\n"
-    "    and 'inherited' are also accepted, though, not documented below.\n"
+    "    specific character ranges.\n"
     "\n"
     "    The range indices refer to the positions between Unicode characters,\n"
     "    unless the --utf8-clusters is provided, in which case range indices\n"
@@ -350,64 +331,13 @@ shape_options_t::add_options (option_parser_t *parser)
 		     this);
 }
 
-static gboolean
-parse_font_size (const char *name G_GNUC_UNUSED,
-		 const char *arg,
-		 gpointer    data,
-		 GError    **error G_GNUC_UNUSED)
-{
-  font_options_t *font_opts = (font_options_t *) data;
-  if (0 == strcmp (arg, "upem"))
-  {
-    font_opts->font_size_y = font_opts->font_size_x = FONT_SIZE_UPEM;
-    return true;
-  }
-  switch (sscanf (arg, "%lf%*[ ,]%lf", &font_opts->font_size_x, &font_opts->font_size_y)) {
-    case 1: font_opts->font_size_y = font_opts->font_size_x;
-    case 2: return true;
-    default:
-      g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
-		   "%s argument should be one to four space-separated numbers",
-		   name);
-      return false;
-  }
-}
 void
 font_options_t::add_options (option_parser_t *parser)
 {
-  char *text = NULL;
-
-  {
-    ASSERT_STATIC (ARRAY_LENGTH_CONST (supported_font_funcs) > 0);
-    GString *s = g_string_new (NULL);
-    g_string_printf (s, "Set font functions implementation to use (default: %s)\n\n    Supported font function implementations are: %s",
-		     supported_font_funcs[0].name,
-		     supported_font_funcs[0].name);
-    for (unsigned int i = 1; i < ARRAY_LENGTH (supported_font_funcs); i++)
-    {
-      g_string_append_c (s, '/');
-      g_string_append (s, supported_font_funcs[i].name);
-    }
-    text = g_string_free (s, FALSE);
-    parser->free_later (text);
-  }
-
-  char *font_size_text;
-  if (default_font_size == FONT_SIZE_UPEM)
-    font_size_text = (char *) "Font size (default: upem)";
-  else
-  {
-    font_size_text = g_strdup_printf ("Font size (default: %d)", default_font_size);
-    parser->free_later (font_size_text);
-  }
-
   GOptionEntry entries[] =
   {
-    {"font-file",	0, 0, G_OPTION_ARG_STRING,	&this->font_file,		"Set font file-name",			"filename"},
-    {"face-index",	0, 0, G_OPTION_ARG_INT,		&this->face_index,		"Set face index (default: 0)",		"index"},
-    {"font-size",	0, default_font_size ? 0 : G_OPTION_FLAG_HIDDEN,
-			      G_OPTION_ARG_CALLBACK,	(gpointer) &parse_font_size,	font_size_text,				"1/2 numbers or 'upem'"},
-    {"font-funcs",	0, 0, G_OPTION_ARG_STRING,	&this->font_funcs,		text,					"impl"},
+    {"font-file",	0, 0, G_OPTION_ARG_STRING,	&this->font_file,		"Font file-name",					"filename"},
+    {"face-index",	0, 0, G_OPTION_ARG_INT,		&this->face_index,		"Face index (default: 0)",                              "index"},
     {NULL}
   };
   parser->add_group (entries,
@@ -441,14 +371,9 @@ output_options_t::add_options (option_parser_t *parser)
   const char *text;
 
   if (NULL == supported_formats)
-    text = "Set output serialization format";
+    text = "Set output format";
   else
-  {
-    char *items = g_strjoinv ("/", const_cast<char **> (supported_formats));
-    text = g_strdup_printf ("Set output format\n\n    Supported output formats are: %s", items);
-    g_free (items);
-    parser->free_later ((char *) text);
-  }
+    text = g_strdup_printf ("Set output format\n\n    Supported formats are: %s", supported_formats);
 
   GOptionEntry entries[] =
   {
@@ -458,8 +383,8 @@ output_options_t::add_options (option_parser_t *parser)
   };
   parser->add_group (entries,
 		     "output",
-		     "Output destination & format options:",
-		     "Options controlling the destination and form of the output",
+		     "Output options:",
+		     "Options controlling the output",
 		     this);
 }
 
@@ -490,7 +415,7 @@ font_options_t::get_font (void) const
       GString *gs = g_string_new (NULL);
       char buf[BUFSIZ];
 #if defined(_WIN32) || defined(__CYGWIN__)
-      setmode (fileno (stdin), O_BINARY);
+      setmode (fileno (stdin), _O_BINARY);
 #endif
       while (!feof (stdin)) {
 	size_t ret = fread (buf, 1, sizeof (buf), stdin);
@@ -538,9 +463,6 @@ font_options_t::get_font (void) const
       }
     }
 
-    if (debug)
-      mm = HB_MEMORY_MODE_DUPLICATE;
-
     blob = hb_blob_create (font_data, len, mm, user_data, destroy);
   }
 
@@ -551,47 +473,13 @@ font_options_t::get_font (void) const
 
   font = hb_font_create (face);
 
-  if (font_size_x == FONT_SIZE_UPEM)
-    font_size_x = hb_face_get_upem (face);
-  if (font_size_y == FONT_SIZE_UPEM)
-    font_size_y = hb_face_get_upem (face);
-
-  int scale_x = (int) scalbnf (font_size_x, subpixel_bits);
-  int scale_y = (int) scalbnf (font_size_y, subpixel_bits);
-  hb_font_set_scale (font, scale_x, scale_y);
+  unsigned int upem = hb_face_get_upem (face);
+  hb_font_set_scale (font, upem, upem);
   hb_face_destroy (face);
 
-  void (*set_font_funcs) (hb_font_t *) = NULL;
-  if (!font_funcs)
-  {
-    set_font_funcs = supported_font_funcs[0].func;
-  }
-  else
-  {
-    for (unsigned int i = 0; i < ARRAY_LENGTH (supported_font_funcs); i++)
-      if (0 == g_ascii_strcasecmp (font_funcs, supported_font_funcs[i].name))
-      {
-	set_font_funcs = supported_font_funcs[i].func;
-	break;
-      }
-    if (!set_font_funcs)
-    {
-      GString *s = g_string_new (NULL);
-      for (unsigned int i = 0; i < ARRAY_LENGTH (supported_font_funcs); i++)
-      {
-        if (i)
-	  g_string_append_c (s, '/');
-	g_string_append (s, supported_font_funcs[i].name);
-      }
-      char *p = g_string_free (s, FALSE);
-      fail (false, "Unknown font function implementation `%s'; supported values are: %s; default is %s",
-	    font_funcs,
-	    p,
-	    supported_font_funcs[0].name);
-      //free (p);
-    }
-  }
-  set_font_funcs (font);
+#ifdef HAVE_FREETYPE
+  hb_ft_font_set_funcs (font);
+#endif
 
   return font;
 }
@@ -601,26 +489,25 @@ const char *
 text_options_t::get_line (unsigned int *len)
 {
   if (text) {
-    if (!line) line = text;
-    if (line_len == (unsigned int) -1)
-      line_len = strlen (line);
+    if (text_len == (unsigned int) -1)
+      text_len = strlen (text);
 
-    if (!line_len) {
+    if (!text_len) {
       *len = 0;
       return NULL;
     }
 
-    const char *ret = line;
-    const char *p = (const char *) memchr (line, '\n', line_len);
+    const char *ret = text;
+    const char *p = (const char *) memchr (text, '\n', text_len);
     unsigned int ret_len;
     if (!p) {
-      ret_len = line_len;
-      line += ret_len;
-      line_len = 0;
+      ret_len = text_len;
+      text += ret_len;
+      text_len = 0;
     } else {
       ret_len = p - ret;
-      line += ret_len + 1;
-      line_len -= ret_len + 1;
+      text += ret_len + 1;
+      text_len -= ret_len + 1;
     }
 
     *len = ret_len;
@@ -672,7 +559,7 @@ output_options_t::get_file_handle (void)
     fp = fopen (output_file, "wb");
   else {
 #if defined(_WIN32) || defined(__CYGWIN__)
-    setmode (fileno (stdout), O_BINARY);
+    setmode (fileno (stdout), _O_BINARY);
 #endif
     fp = stdout;
   }
@@ -699,27 +586,19 @@ format_options_t::add_options (option_parser_t *parser)
 {
   GOptionEntry entries[] =
   {
-    {"show-text",	0, 0, G_OPTION_ARG_NONE,	&this->show_text,		"Prefix each line of output with its corresponding input text",		NULL},
-    {"show-unicode",	0, 0, G_OPTION_ARG_NONE,	&this->show_unicode,		"Prefix each line of output with its corresponding input codepoint(s)",	NULL},
-    {"show-line-num",	0, 0, G_OPTION_ARG_NONE,	&this->show_line_num,		"Prefix each line of output with its corresponding input line number",	NULL},
-    {"verbose",		0, G_OPTION_FLAG_NO_ARG,
-			      G_OPTION_ARG_CALLBACK,	(gpointer) &parse_verbose,	"Prefix each line of output with all of the above",			NULL},
-    {"no-glyph-names",	0, G_OPTION_FLAG_REVERSE,
-			      G_OPTION_ARG_NONE,	&this->show_glyph_names,	"Output glyph indices instead of names",				NULL},
-    {"no-positions",	0, G_OPTION_FLAG_REVERSE,
-			      G_OPTION_ARG_NONE,	&this->show_positions,		"Do not output glyph positions",					NULL},
-    {"no-clusters",	0, G_OPTION_FLAG_REVERSE,
-			      G_OPTION_ARG_NONE,	&this->show_clusters,		"Do not output cluster indices",					NULL},
-    {"show-extents",	0, 0, G_OPTION_ARG_NONE,	&this->show_extents,		"Output glyph extents",							NULL},
+    {"no-glyph-names",	0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE,	&this->show_glyph_names,	"Use glyph indices instead of names",	NULL},
+    {"no-positions",	0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE,	&this->show_positions,		"Do not show glyph positions",		NULL},
+    {"no-clusters",	0, G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE,	&this->show_clusters,		"Do not show cluster mapping",		NULL},
+    {"show-text",	0, 0,			  G_OPTION_ARG_NONE,	&this->show_text,		"Show input text",			NULL},
+    {"show-unicode",	0, 0,			  G_OPTION_ARG_NONE,	&this->show_unicode,		"Show input Unicode codepoints",	NULL},
+    {"show-line-num",	0, 0,			  G_OPTION_ARG_NONE,	&this->show_line_num,		"Show line numbers",			NULL},
+    {"verbose",		0, G_OPTION_FLAG_NO_ARG,  G_OPTION_ARG_CALLBACK,(gpointer) &parse_verbose,	"Show everything",			NULL},
     {NULL}
   };
   parser->add_group (entries,
-		     "output-syntax",
-		     "Output syntax:\n"
-         "    text: [<glyph name or index>=<glyph cluster index within input>@<horizontal displacement>,<vertical displacement>+<horizontal advance>,<vertical advance>|...]\n"
-         "    json: [{\"g\": <glyph name or index>, \"ax\": <horizontal advance>, \"ay\": <vertical advance>, \"dx\": <horizontal displacement>, \"dy\": <vertical displacement>, \"cl\": <glyph cluster index within input>}, ...]\n"
-         "\nOutput syntax options:",
-		     "Options controlling the syntax of the output",
+		     "format",
+		     "Format options:",
+		     "Options controlling the formatting of buffer contents",
 		     this);
 }
 

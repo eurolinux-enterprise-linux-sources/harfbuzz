@@ -19,22 +19,16 @@ which pkg-config || {
 	exit 1
 }
 
-echo -n "checking for libtoolize... "
-which glibtoolize || which libtoolize || {
-	echo "*** No libtoolize (libtool) found, please install it ***"
+echo -n "checking for gtkdocize... "
+which gtkdocize || {
+	echo "*** No gtkdocize found, please install it ***"
 	exit 1
 }
-echo -n "checking for gtkdocize... "
-if which gtkdocize ; then
-	gtkdocize --copy || exit 1
-else
-	echo "*** No gtkdocize (gtk-doc) found, skipping documentation ***"
-	echo "EXTRA_DIST = " > gtk-doc.make
-fi
+gtkdocize || exit 1
 
 echo -n "checking for autoreconf... "
 which autoreconf || {
-	echo "*** No autoreconf (autoconf) found, please install it ***"
+	echo "*** No autoreconf found, please install it ***"
 	exit 1
 }
 

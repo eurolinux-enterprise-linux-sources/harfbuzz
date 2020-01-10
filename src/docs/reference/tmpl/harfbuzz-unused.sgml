@@ -1,0 +1,4457 @@
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/FontTableCache.sgml:Title ##### -->
+FontTableCache
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/PortableFontInstance.sgml:Title ##### -->
+PortableFontInstance
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/cmaps.sgml:Title ##### -->
+cmaps
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer-private.sgml:Title ##### -->
+harfbuzz-buffer-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-buffer.sgml:Title ##### -->
+harfbuzz-buffer
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-external.sgml:Title ##### -->
+harfbuzz-external
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef-private.sgml:Title ##### -->
+harfbuzz-gdef-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gdef.sgml:Title ##### -->
+harfbuzz-gdef
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-global.sgml:Title ##### -->
+harfbuzz-global
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos-private.sgml:Title ##### -->
+harfbuzz-gpos-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gpos.sgml:Title ##### -->
+harfbuzz-gpos
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub-private.sgml:Title ##### -->
+harfbuzz-gsub-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-gsub.sgml:Title ##### -->
+harfbuzz-gsub
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-impl.sgml:Title ##### -->
+harfbuzz-impl
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open-private.sgml:Title ##### -->
+harfbuzz-open-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-open.sgml:Title ##### -->
+harfbuzz-open
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper-private.sgml:Title ##### -->
+harfbuzz-shaper-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-shaper.sgml:Title ##### -->
+HB_Font
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream-private.sgml:Title ##### -->
+harfbuzz-stream-private
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz-stream.sgml:Title ##### -->
+harfbuzz-stream
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/harfbuzz.sgml:Title ##### -->
+harfbuzz
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/letest.sgml:Title ##### -->
+letest
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/sfnt.sgml:Title ##### -->
+sfnt
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/ucdn.sgml:Title ##### -->
+ucdn
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:Image ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:Stability_Level ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/unicodedata_db.sgml:Title ##### -->
+unicodedata_db
+
+
+<!-- ##### MACRO ACCESS_Frame ##### -->
+<para>
+
+</para>
+
+@size: 
+
+<!-- ##### MACRO ADD_Glyph ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@glyph_index: 
+@component: 
+@ligID: 
+
+<!-- ##### MACRO ADD_String ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@num_in: 
+@num_out: 
+@glyph_data: 
+@component: 
+@ligID: 
+
+<!-- ##### MACRO AF3_X_DEVICE_TABLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO AF3_Y_DEVICE_TABLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO ALLOC ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_size: 
+
+<!-- ##### MACRO ALLOC_ARRAY ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_count: 
+@_type: 
+
+<!-- ##### MACRO ANY_NUMBER ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO ARRAY_COPY ##### -->
+<para>
+
+</para>
+
+@dst: 
+@src: 
+@count: 
+
+<!-- ##### MACRO ARRAY_LEN ##### -->
+<para>
+
+</para>
+
+@Array: 
+
+<!-- ##### MACRO ARRAY_SIZE ##### -->
+<para>
+
+</para>
+
+@array: 
+
+<!-- ##### MACRO BIDI_MIRROR_LEN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF BigDate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO CHECK_Property ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@index: 
+@flags: 
+@property: 
+
+<!-- ##### TYPEDEF CMAPEncodingSubtable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPEncodingSubtable32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPEncodingSubtableHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat0Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat10Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat12Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat2Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat2Subheader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat4Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat6Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPFormat8Encoding ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPGroup ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF CMAPTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO COMP_SHIFT1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO COMP_SHIFT2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO COPY_Glyph ##### -->
+<para>
+
+</para>
+
+@buffer: 
+
+<!-- ##### MACRO DECOMP_SHIFT1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO DECOMP_SHIFT2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO DELETE_ARRAY ##### -->
+<para>
+
+</para>
+
+@array: 
+
+<!-- ##### TYPEDEF DirectoryEntry ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO ERR ##### -->
+<para>
+
+</para>
+
+@err: 
+
+<!-- ##### MACRO FILE_Pos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO FILE_Seek ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO FORGET_Frame ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO FREE ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+
+<!-- ##### STRUCT FontTableCacheEntry ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_Byte ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_Char ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_Long ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_Short ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_Tag4 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_ULong ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GET_UShort ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GOTO_Table ##### -->
+<para>
+
+</para>
+
+@tag: 
+
+<!-- ##### MACRO GROW_ARRAY ##### -->
+<para>
+
+</para>
+
+@array: 
+@newSize: 
+
+<!-- ##### TYPEDEF HB_16Dot16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_ALL_GLYPHS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION HB_AltFunction ##### -->
+<para>
+
+</para>
+
+@pos: 
+@glyphID: 
+@num_alternates: 
+@alternates: 
+@data: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_AlternateSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AlternateSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Anchor ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AnchorFormat4 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_ArabicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_AttachList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_AttachPoint ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_BEGIN_DECLS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_BEGIN_HEADER ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_BEGIN_VISIBILITY ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_BaseArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_BaseRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_BasicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Bool ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Byte ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CaretValue ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CaretValueFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CaretValueFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CaretValueFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CaretValueFormat4 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextPosFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainContextSubstFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainPosRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ChainSubRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Char ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM HB_CharCategory ##### -->
+<para>
+
+</para>
+
+@HB_Mark_NonSpacing: 
+@HB_Mark_SpacingCombining: 
+@HB_Mark_Enclosing: 
+@HB_Number_DecimalDigit: 
+@HB_Number_Letter: 
+@HB_Number_Other: 
+@HB_Separator_Space: 
+@HB_Separator_Line: 
+@HB_Separator_Paragraph: 
+@HB_Other_Control: 
+@HB_Other_Format: 
+@HB_Other_Surrogate: 
+@HB_Other_PrivateUse: 
+@HB_Other_NotAssigned: 
+@HB_Letter_Uppercase: 
+@HB_Letter_Lowercase: 
+@HB_Letter_Titlecase: 
+@HB_Letter_Modifier: 
+@HB_Letter_Other: 
+@HB_Punctuation_Connector: 
+@HB_Punctuation_Dash: 
+@HB_Punctuation_Open: 
+@HB_Punctuation_Close: 
+@HB_Punctuation_InitialQuote: 
+@HB_Punctuation_FinalQuote: 
+@HB_Punctuation_Other: 
+@HB_Symbol_Math: 
+@HB_Symbol_Currency: 
+@HB_Symbol_Modifier: 
+@HB_Symbol_Other: 
+
+<!-- ##### TYPEDEF HB_Class1Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Class2Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ClassDefFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ClassDefFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ClassDefinition ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ClassRangeRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM HB_CombiningClass ##### -->
+<para>
+
+</para>
+
+@HB_Combining_BelowLeftAttached: 
+@HB_Combining_BelowAttached: 
+@HB_Combining_BelowRightAttached: 
+@HB_Combining_LeftAttached: 
+@HB_Combining_RightAttached: 
+@HB_Combining_AboveLeftAttached: 
+@HB_Combining_AboveAttached: 
+@HB_Combining_AboveRightAttached: 
+@HB_Combining_BelowLeft: 
+@HB_Combining_Below: 
+@HB_Combining_BelowRight: 
+@HB_Combining_Left: 
+@HB_Combining_Right: 
+@HB_Combining_AboveLeft: 
+@HB_Combining_Above: 
+@HB_Combining_AboveRight: 
+@HB_Combining_DoubleBelow: 
+@HB_Combining_DoubleAbove: 
+@HB_Combining_IotaSubscript: 
+
+<!-- ##### TYPEDEF HB_ComponentRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextPosFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ContextSubstFormat3 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_ConvertStringToGlyphIndices ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Coverage ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CoverageFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CoverageFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_CursivePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_DECLARE_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+
+<!-- ##### MACRO HB_DEFAULT_LANGUAGE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Device ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_Done_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_Done_GPOS_Table ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_Done_GSUB_Table ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@Returns: 
+
+<!-- ##### MACRO HB_END_DECLS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_END_HEADER ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_END_VISIBILITY ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_EntryExitRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM HB_Error ##### -->
+<para>
+
+</para>
+
+@HB_Err_Ok: 
+@HB_Err_Not_Covered: 
+@HB_Err_Invalid_Argument: 
+@HB_Err_Invalid_SubTable_Format: 
+@HB_Err_Invalid_SubTable: 
+@HB_Err_Read_Error: 
+@HB_Err_Out_Of_Memory: 
+
+<!-- ##### TYPEDEF HB_ExtensionPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ExtensionSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_FIXED_CONSTANT ##### -->
+<para>
+
+</para>
+
+@v: 
+
+<!-- ##### MACRO HB_FIXED_ROUND ##### -->
+<para>
+
+</para>
+
+@v: 
+
+<!-- ##### MACRO HB_FREE_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Name: 
+
+<!-- ##### TYPEDEF HB_Face ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_FaceRec ##### -->
+<para>
+
+</para>
+
+@isSymbolFont: 
+@gdef: 
+@gsub: 
+@gpos: 
+@supported_scripts: 
+@buffer: 
+@current_script: 
+@current_flags: 
+@has_opentype_kerning: 
+@glyphs_substituted: 
+@tmpAttributes: 
+@tmpLogClusters: 
+@length: 
+@orig_nglyphs: 
+
+<!-- ##### TYPEDEF HB_Feature ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_FeatureList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_FeatureRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Fixed ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_FixedPoint ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+
+<!-- ##### TYPEDEF HB_Font ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_FontClass ##### -->
+<para>
+
+</para>
+
+@convertStringToGlyphIndices: 
+@getGlyphAdvances: 
+@canRender: 
+@getPointInOutline: 
+@getGlyphMetrics: 
+@getFontMetric: 
+
+<!-- ##### ENUM HB_FontMetric ##### -->
+<para>
+
+</para>
+
+@HB_FontAscent: 
+
+<!-- ##### STRUCT HB_FontRec ##### -->
+<para>
+
+</para>
+
+@klass: 
+@x_ppem: 
+@y_ppem: 
+@x_scale: 
+@y_scale: 
+@userData: 
+
+<!-- ##### FUNCTION HB_FreeFace ##### -->
+<para>
+
+</para>
+
+@face: 
+
+<!-- ##### TYPEDEF HB_GDEF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GDEFHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GDEF_BASE_GLYPH ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GDEF_Build_ClassDefinition ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@num_glyphs: 
+@glyph_count: 
+@glyph_array: 
+@class_array: 
+@Returns: 
+
+<!-- ##### MACRO HB_GDEF_COMPONENT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GDEF_Get_Glyph_Property ##### -->
+<para>
+
+</para>
+
+@gdef: 
+@glyphID: 
+@property: 
+@Returns: 
+
+<!-- ##### MACRO HB_GDEF_LIGATURE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GDEF_MARK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GLYPH_PROPERTIES_UNKNOWN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GPOS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GPOSHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GPOS_Add_Feature ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@feature_index: 
+@property: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Apply_String ##### -->
+<para>
+
+</para>
+
+@font: 
+@gpos: 
+@load_flags: 
+@buffer: 
+@dvi: 
+@r2l: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Clear_Features ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@Returns: 
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_DEVICE_TABLES ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ID_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_ID_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_X_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ID_ADVANCE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_ID_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_PLACEMENT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_FORMAT_HAVE_Y_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_CHAIN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_CONTEXT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_CURSIVE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_EXTENSION ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_MARKBASE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_MARKLIG ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_MARKMARK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_PAIR ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GPOS_LOOKUP_SINGLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GPOS_Query_Features ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@script_index: 
+@language_index: 
+@feature_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Query_Languages ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@script_index: 
+@language_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Query_Scripts ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@script_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Register_MM_Function ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@mmfunc: 
+@data: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Select_Feature ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@feature_tag: 
+@script_index: 
+@language_index: 
+@feature_index: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Select_Language ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@language_tag: 
+@script_index: 
+@language_index: 
+@req_feature_index: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GPOS_Select_Script ##### -->
+<para>
+
+</para>
+
+@gpos: 
+@script_tag: 
+@script_index: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_GPOS_SubTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GSUB ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_GSUBHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GSUB_Add_Feature ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@feature_index: 
+@property: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Apply_String ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@buffer: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Clear_Features ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@Returns: 
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_ALTERNATE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_CHAIN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_CONTEXT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_EXTENSION ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_LIGATURE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_MULTIPLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_REVERSE_CHAIN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_GSUB_LOOKUP_SINGLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_GSUB_Query_Features ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@script_index: 
+@language_index: 
+@feature_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Query_Languages ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@script_index: 
+@language_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Query_Scripts ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@script_tag_list: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Register_Alternate_Function ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@altfunc: 
+@data: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Select_Feature ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@feature_tag: 
+@script_index: 
+@language_index: 
+@feature_index: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Select_Language ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@language_tag: 
+@script_index: 
+@language_index: 
+@req_feature_index: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_GSUB_Select_Script ##### -->
+<para>
+
+</para>
+
+@gsub: 
+@script_tag: 
+@script_index: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_GSUB_SubTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION HB_GetFontTableFunc ##### -->
+<para>
+
+</para>
+
+@font: 
+@tag: 
+@buffer: 
+@length: 
+@Returns: 
+
+<!-- ##### MACRO HB_GetGlyphAdvances ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+
+<!-- ##### TYPEDEF HB_Glyph ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_GlyphAttributes ##### -->
+<para>
+
+</para>
+
+@justification: 
+@clusterStart: 
+@mark: 
+@zeroWidth: 
+@dontPrint: 
+@combiningClass: 
+
+<!-- ##### STRUCT HB_GlyphMetrics ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+@width: 
+@height: 
+@xOffset: 
+@yOffset: 
+
+<!-- ##### FUNCTION HB_GreekShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### MACRO HB_H_IN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_HangulShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_HebrewShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_HeuristicPosition ##### -->
+<para>
+
+</para>
+
+@item: 
+
+<!-- ##### FUNCTION HB_HeuristicSetGlyphAttributes ##### -->
+<para>
+
+</para>
+
+@item: 
+
+<!-- ##### MACRO HB_INIT_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+@Length: 
+
+<!-- ##### MACRO HB_INTERNAL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_IndicShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Int ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_IsControlChar ##### -->
+<para>
+
+</para>
+
+@uc: 
+
+<!-- ##### MACRO HB_IsHighSurrogate ##### -->
+<para>
+
+</para>
+
+@ucs: 
+
+<!-- ##### MACRO HB_IsLowSurrogate ##### -->
+<para>
+
+</para>
+
+@ucs: 
+
+<!-- ##### ENUM HB_JustificationClass ##### -->
+<para>
+
+</para>
+
+@HB_NoJustification: 
+@HB_Arabic_Space: 
+@HB_Character: 
+@HB_Space: 
+@HB_Arabic_Normal: 
+@HB_Arabic_Waw: 
+@HB_Arabic_BaRa: 
+@HB_Arabic_Alef: 
+@HB_Arabic_HaaDal: 
+@HB_Arabic_Seen: 
+@HB_Arabic_Kashida: 
+
+<!-- ##### FUNCTION HB_KhmerShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### MACRO HB_LIKELY ##### -->
+<para>
+
+</para>
+
+@cond: 
+
+<!-- ##### MACRO HB_LOOKUP_FLAG_IGNORE_BASE_GLYPHS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_LOOKUP_FLAG_IGNORE_LIGATURES ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_LOOKUP_FLAG_IGNORE_MARKS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_LOOKUP_FLAG_IGNORE_SPECIAL_MARKS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_LOOKUP_FLAG_RIGHT_TO_LEFT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LangSys ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LangSysRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigCaretList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigGlyph ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Ligature ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureAttach ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LigatureSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_Load_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@stream: 
+@gdef: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_Load_GPOS_Table ##### -->
+<para>
+
+</para>
+
+@stream: 
+@gpos: 
+@gdef: 
+@gdefStream: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_Load_GSUB_Table ##### -->
+<para>
+
+</para>
+
+@stream: 
+@gsub: 
+@gdef: 
+@gdefStream: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Lookup ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_LookupList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_MAKE_TAG ##### -->
+<para>
+
+</para>
+
+@_x1: 
+@_x2: 
+@_x3: 
+@_x4: 
+
+<!-- ##### MACRO HB_MAX_NESTING_LEVEL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION HB_MMFunction ##### -->
+<para>
+
+</para>
+
+@font: 
+@metric_id: 
+@metric_value: 
+@data: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Mark2Array ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Mark2Record ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkArray ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkBasePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkLigPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkMarkPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MarkRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_MultipleSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_MyanmarShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_NewFace ##### -->
+<para>
+
+</para>
+
+@font: 
+@tableFunc: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_New_GDEF_Table ##### -->
+<para>
+
+</para>
+
+@retptr: 
+@Returns: 
+
+<!-- ##### MACRO HB_OT_H_IN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT HB_OpenTypeFeature ##### -->
+<para>
+
+</para>
+
+@tag: 
+@property: 
+
+<!-- ##### FUNCTION HB_OpenTypePosition ##### -->
+<para>
+
+</para>
+
+@item: 
+@availableGlyphs: 
+@doLogClusters: 
+@Returns: 
+
+<!-- ##### ENUM HB_OpenTypeProperty ##### -->
+<para>
+
+</para>
+
+@LocaProperty: 
+@CcmpProperty: 
+@InitProperty: 
+@IsolProperty: 
+@FinaProperty: 
+@MediProperty: 
+@RligProperty: 
+@CaltProperty: 
+@LigaProperty: 
+@DligProperty: 
+@CswhProperty: 
+@MsetProperty: 
+@NuktaProperty: 
+@AkhantProperty: 
+@RephProperty: 
+@PreFormProperty: 
+@BelowFormProperty: 
+@AboveFormProperty: 
+@HalfFormProperty: 
+@PostFormProperty: 
+@ConjunctFormProperty: 
+@VattuProperty: 
+@PreSubstProperty: 
+@BelowSubstProperty: 
+@AboveSubstProperty: 
+@PostSubstProperty: 
+@HalantProperty: 
+@CligProperty: 
+@IndicCaltProperty: 
+
+<!-- ##### FUNCTION HB_OpenTypeShape ##### -->
+<para>
+
+</para>
+
+@item: 
+@properties: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_PairPos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairPosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairPosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PairValueRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Pointer ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosLookupRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_PosRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_RangeRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ReverseChainContextSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_STACKARRAY ##### -->
+<para>
+
+</para>
+
+@Type: 
+@Name: 
+@Length: 
+
+<!-- ##### ENUM HB_Script ##### -->
+<para>
+
+</para>
+
+@HB_Script_Common: 
+@HB_Script_Greek: 
+@HB_Script_Cyrillic: 
+@HB_Script_Armenian: 
+@HB_Script_Hebrew: 
+@HB_Script_Arabic: 
+@HB_Script_Syriac: 
+@HB_Script_Thaana: 
+@HB_Script_Devanagari: 
+@HB_Script_Bengali: 
+@HB_Script_Gurmukhi: 
+@HB_Script_Gujarati: 
+@HB_Script_Oriya: 
+@HB_Script_Tamil: 
+@HB_Script_Telugu: 
+@HB_Script_Kannada: 
+@HB_Script_Malayalam: 
+@HB_Script_Sinhala: 
+@HB_Script_Thai: 
+@HB_Script_Lao: 
+@HB_Script_Tibetan: 
+@HB_Script_Myanmar: 
+@HB_Script_Georgian: 
+@HB_Script_Hangul: 
+@HB_Script_Ogham: 
+@HB_Script_Runic: 
+@HB_Script_Khmer: 
+@HB_Script_Nko: 
+@HB_Script_Inherited: 
+@HB_ScriptCount: 
+
+<!-- ##### STRUCT HB_ScriptEngine ##### -->
+<para>
+
+</para>
+
+@shape: 
+
+<!-- ##### TYPEDEF HB_ScriptList ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ScriptRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ScriptTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_SelectScript ##### -->
+<para>
+
+</para>
+
+@item: 
+@features: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_Sequence ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### USER_FUNCTION HB_ShapeFunction ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### FUNCTION HB_ShapeItem ##### -->
+<para>
+
+</para>
+
+@item: 
+@Returns: 
+
+<!-- ##### ENUM HB_ShaperFlag ##### -->
+<para>
+
+</para>
+
+@HB_ShaperFlag_Default: 
+@HB_ShaperFlag_NoKerning: 
+@HB_ShaperFlag_UseDesignMetrics: 
+
+<!-- ##### TYPEDEF HB_ShaperItem ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Short ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePos ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePosFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SinglePosFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubst ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubstFormat1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SingleSubstFormat2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_Stream ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM HB_StringToGlyphsFlags ##### -->
+<para>
+
+</para>
+
+@HB_LeftToRight: 
+@HB_RightToLeft: 
+
+<!-- ##### TYPEDEF HB_SubClassRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubClassSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubRule ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubRuleSet ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_SubstLookupRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_SurrogateToUcs4 ##### -->
+<para>
+
+</para>
+
+@high: 
+@low: 
+
+<!-- ##### TYPEDEF HB_Tag ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION HB_TibetanShape ##### -->
+<para>
+
+</para>
+
+@shaper_item: 
+@Returns: 
+
+<!-- ##### TYPEDEF HB_UChar16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UChar32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_UInt ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO HB_UNLIKELY ##### -->
+<para>
+
+</para>
+
+@cond: 
+
+<!-- ##### MACRO HB_UNUSED ##### -->
+<para>
+
+</para>
+
+@arg: 
+
+<!-- ##### TYPEDEF HB_UShort ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HB_ValueRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HEADTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HHEATable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF HMTXTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO IN_COMPONENT ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO IN_CURGLYPH ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO IN_CURITEM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO IN_GLYPH ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO IN_ITEM ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO IN_LIGID ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO IN_PROPERTIES ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### TYPEDEF LongHorMetric ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF MAXPTable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO MEM_Copy ##### -->
+<para>
+
+</para>
+
+@dest: 
+@source: 
+@count: 
+
+<!-- ##### TYPEDEF NAMETable ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO NEW_ARRAY ##### -->
+<para>
+
+</para>
+
+@type: 
+@count: 
+
+<!-- ##### MACRO NULL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF NameRecord ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO OUT_GLYPH ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO OUT_ITEM ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO POSITION ##### -->
+<para>
+
+</para>
+
+@pos: 
+
+<!-- ##### MACRO PositioningProperties ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO REALLOC ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_newsz: 
+
+<!-- ##### MACRO REALLOC_ARRAY ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_newcnt: 
+@_type: 
+
+<!-- ##### MACRO REPLACE_Glyph ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@glyph_index: 
+@nesting_level: 
+
+<!-- ##### MACRO SET_ERR ##### -->
+<para>
+
+</para>
+
+@c: 
+
+<!-- ##### TYPEDEF SFNTDirectory ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO SHIFT1 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO SHIFT2 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO TOTAL_FIRST ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO TOTAL_LAST ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO TTAG_GDEF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO TTAG_GPOS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO TTAG_GSUB ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF TestResult ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_AL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_AN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_B ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_BN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_CS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_EN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_ES ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_ET ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_L ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_LRE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_LRO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_NSM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_ON ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_PDF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_R ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_RLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_RLO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_S ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_BIDI_CLASS_WS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_A ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_F ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_H ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_N ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_NA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_EAST_ASIAN_W ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_CC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_CF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_CN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_CO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_CS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_LL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_LM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_LO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_LT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_LU ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_MC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_ME ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_MN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_ND ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_NL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_NO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PD ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PF ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_PS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_SC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_SK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_SM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_SO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_ZL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_ZP ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_GENERAL_CATEGORY_ZS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_ARABIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_ARMENIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_AVESTAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BALINESE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BAMUM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BATAK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BENGALI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BOPOMOFO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BRAHMI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BRAILLE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BUGINESE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_BUHID ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CANADIAN_ABORIGINAL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CARIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CHAKMA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CHAM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CHEROKEE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_COMMON ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_COPTIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CUNEIFORM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CYPRIOT ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_CYRILLIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_DESERET ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_DEVANAGARI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_EGYPTIAN_HIEROGLYPHS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_ETHIOPIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GEORGIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GLAGOLITIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GOTHIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GREEK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GUJARATI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_GURMUKHI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_HAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_HANGUL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_HANUNOO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_HEBREW ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_HIRAGANA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_IMPERIAL_ARAMAIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_INHERITED ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_INSCRIPTIONAL_PAHLAVI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_INSCRIPTIONAL_PARTHIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_JAVANESE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KAITHI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KANNADA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KATAKANA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KAYAH_LI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KHAROSHTHI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_KHMER ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LAO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LATIN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LEPCHA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LIMBU ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LINEAR_B ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LISU ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LYCIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_LYDIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MALAYALAM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MANDAIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MEETEI_MAYEK ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MEROITIC_CURSIVE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MEROITIC_HIEROGLYPHS ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MIAO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MONGOLIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_MYANMAR ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_NEW_TAI_LUE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_NKO ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OGHAM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OLD_ITALIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OLD_PERSIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OLD_SOUTH_ARABIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OLD_TURKIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OL_CHIKI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_ORIYA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_OSMANYA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_PHAGS_PA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_PHOENICIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_REJANG ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_RUNIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SAMARITAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SAURASHTRA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SHARADA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SHAVIAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SINHALA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SORA_SOMPENG ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SUNDANESE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SYLOTI_NAGRI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_SYRIAC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAGALOG ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAGBANWA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAI_LE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAI_THAM ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAI_VIET ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAKRI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TAMIL ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TELUGU ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_THAANA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_THAI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TIBETAN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_TIFINAGH ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_UGARITIC ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_UNKNOWN ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_VAI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UCDN_SCRIPT_YI ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO UNIDATA_VERSION ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO VR_X_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO VR_X_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO VR_Y_ADVANCE_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO VR_Y_PLACEMENT_DEVICE ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION Xhb_ot_layout_lookup_enumerate_sequences ##### -->
+<para>
+
+</para>
+
+@face: 
+@table_tag: 
+@lookup_index: 
+@callback: 
+@user_data: 
+
+<!-- ##### FUNCTION Xhb_ot_layout_lookup_position ##### -->
+<para>
+
+</para>
+
+@font: 
+@lookup_index: 
+@sequence: 
+@positions: 
+@Returns: 
+
+<!-- ##### FUNCTION Xhb_ot_layout_lookup_substitute ##### -->
+<para>
+
+</para>
+
+@font: 
+@lookup_index: 
+@sequence: 
+@out_size: 
+@glyphs_out: 
+@clusters_out: 
+@out_length: 
+@Returns: 
+
+<!-- ##### FUNCTION find ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+<!-- ##### FUNCTION findUnicodeMapper ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+<!-- ##### TYPEDEF fixed ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION getMetrics ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_bitfield ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_int8 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint16 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint32 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF hb_uint8 ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF int16_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF int32_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF int64_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF int8_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION readFontTable ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_compat_decompose ##### -->
+<para>
+
+</para>
+
+@code: 
+@decomposed: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_compose ##### -->
+<para>
+
+</para>
+
+@code: 
+@a: 
+@b: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_decompose ##### -->
+<para>
+
+</para>
+
+@code: 
+@a: 
+@b: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_bidi_class ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_combining_class ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_east_asian_width ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_general_category ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_mirrored ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_script ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_get_unicode_version ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+<!-- ##### FUNCTION ucdn_mirror ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+<!-- ##### TYPEDEF uint16_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF uint32_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF uint64_t ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### TYPEDEF uint8_t ##### -->
+<para>
+
+</para>
+
+

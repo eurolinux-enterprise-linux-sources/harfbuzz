@@ -1,0 +1,178 @@
+<!-- ##### SECTION Title ##### -->
+harfbuzz-impl
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO ALLOC ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_size: 
+
+
+<!-- ##### MACRO ALLOC_ARRAY ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_count: 
+@_type: 
+
+
+<!-- ##### MACRO ARRAY_LEN ##### -->
+<para>
+
+</para>
+
+@Array: 
+
+
+<!-- ##### MACRO ERR ##### -->
+<para>
+
+</para>
+
+@err: 
+
+
+<!-- ##### MACRO FREE ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+
+
+<!-- ##### MACRO HB_INTERNAL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO HB_IsHighSurrogate ##### -->
+<para>
+
+</para>
+
+@ucs: 
+
+
+<!-- ##### MACRO HB_IsLowSurrogate ##### -->
+<para>
+
+</para>
+
+@ucs: 
+
+
+<!-- ##### MACRO HB_LIKELY ##### -->
+<para>
+
+</para>
+
+@cond: 
+
+
+<!-- ##### MACRO HB_SurrogateToUcs4 ##### -->
+<para>
+
+</para>
+
+@high: 
+@low: 
+
+
+<!-- ##### MACRO HB_UNLIKELY ##### -->
+<para>
+
+</para>
+
+@cond: 
+
+
+<!-- ##### MACRO HB_UNUSED ##### -->
+<para>
+
+</para>
+
+@arg: 
+
+
+<!-- ##### MACRO MEM_Copy ##### -->
+<para>
+
+</para>
+
+@dest: 
+@source: 
+@count: 
+
+
+<!-- ##### MACRO NULL ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO REALLOC ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_newsz: 
+
+
+<!-- ##### MACRO REALLOC_ARRAY ##### -->
+<para>
+
+</para>
+
+@_ptr: 
+@_newcnt: 
+@_type: 
+
+
+<!-- ##### MACRO TTAG_GDEF ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO TTAG_GPOS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO TTAG_GSUB ##### -->
+<para>
+
+</para>
+
+
+

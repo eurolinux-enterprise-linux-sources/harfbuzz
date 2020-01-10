@@ -53,9 +53,6 @@ test_blob_empty (void)
   g_assert (hb_blob_is_immutable (hb_blob_get_empty ()));
   g_assert (hb_blob_get_empty () != NULL);
   g_assert (hb_blob_get_empty () == hb_blob_create (NULL, 0, HB_MEMORY_MODE_READONLY, NULL, NULL));
-  g_assert (hb_blob_get_empty () == hb_blob_create ("asdf", 0, HB_MEMORY_MODE_READONLY, NULL, NULL));
-  g_assert (hb_blob_get_empty () == hb_blob_create (NULL, -1, HB_MEMORY_MODE_READONLY, NULL, NULL));
-  g_assert (hb_blob_get_empty () == hb_blob_create ("asdfg", -1, HB_MEMORY_MODE_READONLY, NULL, NULL));
 
   blob = hb_blob_get_empty ();
   g_assert (blob == hb_blob_get_empty ());
@@ -273,7 +270,7 @@ test_blob_subblob (fixture_t *fixture, gconstpointer user_data)
 
   if (mm == HB_MEMORY_MODE_DUPLICATE) {
     g_assert_cmpint (fixture->freed, ==, 1);
-    fixture->data = (char *) hb_blob_get_data (b, NULL);
+    fixture->data = hb_blob_get_data (b, NULL);
   } else {
     g_assert_cmpint (fixture->freed, ==, 0);
   }
