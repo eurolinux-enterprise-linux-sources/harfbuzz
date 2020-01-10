@@ -28,8 +28,8 @@ CHANGELOG_RANGE =
 ChangeLog: $(srcdir)/ChangeLog
 $(srcdir)/ChangeLog:
 	$(AM_V_GEN) if test -d "$(top_srcdir)/.git"; then \
-	  (GIT_DIR=$(top_srcdir)/.git $(top_srcdir)/missing --run \
-	   git log $(CHANGELOG_RANGE) --stat) | fmt --split-only > $@.tmp \
+	  (GIT_DIR=$(top_srcdir)/.git \
+	   $(GIT) log $(CHANGELOG_RANGE) --stat) | fmt --split-only > $@.tmp \
 	  && mv -f $@.tmp "$(srcdir)/ChangeLog" \
 	  || ($(RM) $@.tmp; \
 	      echo Failed to generate ChangeLog, your ChangeLog may be outdated >&2; \
@@ -55,7 +55,9 @@ DISTCHECK_CONFIGURE_FLAGS = \
 
 # TODO: Copy infrastructure from cairo
 
+# TAR_OPTIONS is not set as env var for 'make dist'.  How to fix that?
 TAR_OPTIONS = --owner=0 --group=0
+
 dist-hook: dist-clear-sticky-bits
 # Clean up any sticky bits we may inherit from parent dir
 dist-clear-sticky-bits:

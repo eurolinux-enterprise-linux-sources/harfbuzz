@@ -1,4 +1,4 @@
-## Process this file with automake to produce Makefile.in
+# Process this file with automake to produce Makefile.in
 
 # We require automake 1.6 at least.
 AUTOMAKE_OPTIONS = 1.6
@@ -30,9 +30,17 @@ SCANGOBJ_OPTIONS=
 # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED"
 SCAN_OPTIONS=--rebuild-types --deprecated-guards="HB_DISABLE_DEPRECATED"
 
+# Header files or dirs to ignore when scanning. Use base file/dir names
+# e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h private_code
+IGNORE_HFILES=`cd $(top_srcdir)/src; find . -path './hb-*/*.h' | sed 's@^.*/@@'`
+if HAVE_GOBJECT
+else
+IGNORE_HFILES+=hb-gobject.h hb-gobject-enums.h hb-gobject-structs.h
+endif
+
 # Extra options to supply to gtkdoc-mkdb.
 # e.g. MKDB_OPTIONS=--xml-mode --output-format=xml
-MKDB_OPTIONS=--xml-mode --output-format=xml
+MKDB_OPTIONS=--source-suffixes=h,cc --xml-mode --output-format=xml --ignore-files="$(IGNORE_HFILES)"
 
 # Extra options to supply to gtkdoc-mktmpl
 # e.g. MKTMPL_OPTIONS=--only-section-tmpl
@@ -55,27 +63,13 @@ CFILE_GLOB=$(top_srcdir)/src/hb-*.cc
 # e.g. EXTRA_HFILES=$(top_srcdir}/contrib/extra.h
 EXTRA_HFILES=$(top_builddir)/src/hb-version.h
 
-# Header files or dirs to ignore when scanning. Use base file/dir names
-# e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h private_code
-IGNORE_HFILES=`cd $(top_srcdir)/src; find . -path './hb-*/*.h' | sed 's@^.*/@@'`
-if HAVE_GOBJECT
-else
-# XXX Prevent "make dist"
-IGNORE_HFILES+=hb-gobject.h hb-gobject-enums.h hb-gobject-structs.h
-endif
-
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png
 HTML_IMAGES=
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
 # e.g. content_files=running.sgml building.sgml changes-2.0.sgml
-content_files= \
-	version.xml \
-	$(NULL)
-
-version.xml: $(top_srcdir)/configure.ac
-	$(AM_V_GEN) echo $(HB_VERSION_MAJOR).$(HB_VERSION_MINOR).$(HB_VERSION_MICRO) > $@
+content_files= version.xml
 
 # SGML files where gtk-doc abbrevations (#GtkWidget) are expanded
 # These files must be listed here *and* in content_files
@@ -98,7 +92,7 @@ include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 # e.g. EXTRA_DIST += version.xml.in
-EXTRA_DIST +=
+EXTRA_DIST += version.xml.in
 
 # Files not to distribute
 # for --rebuild-types in $(SCAN_OPTIONS), e.g. $(DOC_MODULE).types
@@ -113,10 +107,5 @@ TESTS_ENVIRONMENT = cd $(srcdir) && \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
 #TESTS = $(GTKDOC_CHECK)
 endif
-
-maintainer-clean-local: maintainer-clean-tmpl
-
-maintainer-clean-tmpl:
-	-rm -rf $(srcdir)/tmpl
 
 -include $(top_srcdir)/git.mk

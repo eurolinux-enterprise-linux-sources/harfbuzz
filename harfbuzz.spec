@@ -1,12 +1,12 @@
 Name:           harfbuzz
-Version:        0.9.20
-Release:        4%{?dist}
+Version:        0.9.36
+Release:        1%{?dist}
 Summary:        Text shaping library
 
 License:        MIT
 URL:            http://freedesktop.org/wiki/Software/HarfBuzz
 Source0:        http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-%{version}.tar.bz2
-Patch0:         harfbuzz-0.9.20-fix-graphite2.patch
+
 BuildRequires:  cairo-devel
 BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
@@ -36,7 +36,7 @@ This package contains Harfbuzz ICU support library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fix-graphite2
+
 
 %build
 %configure --disable-static --with-graphite2
@@ -79,6 +79,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/libharfbuzz-icu.so.*
 
 %changelog
+* Tue Apr 28 2015 Parag Nemade <pnemade AT redhat DOT com> - 0.9.36-1
+- Update to 0.9.36 upstream release
+- Resolves: #1201148
+
 * Mon Aug 18 2014 Parag Nemade <pnemade AT redhat DOT com> - 0.9.20-4
 - Resolves:rh#998812 - gedit segfaults when loading a certain file
 
